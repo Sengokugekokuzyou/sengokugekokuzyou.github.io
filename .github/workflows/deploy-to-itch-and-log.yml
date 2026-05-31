@@ -1,0 +1,145 @@
+name: Deploy game to itch.io and log update
+
+on:
+  workflow_dispatch:
+    inputs:
+      game_repo:
+        description: GitHub repository that contains the game files
+        required: true
+        default: Sengokugekokuzyou/sengoku-blood-
+      itch_target:
+        description: itch.io target in owner/game format
+        required: true
+        default: sengokugekokujobeats/kekkanokeifu
+      channel:
+        description: itch.io butler channel
+        required: true
+        default: html5
+      version:
+        description: Version label for itch.io
+        required: true
+        default: v0.0.0
+      title:
+        description: Public update title
+        required: true
+        default: 血華の系譜を更新しました
+      body:
+        description: Public update body
+        required: true
+        default: ゲーム本体を更新しました。
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      GAME_REPO: ${{ inputs.game_repo }}
+      ITCH_TARGET: ${{ inputs.itch_target }}
+      ITCH_CHANNEL: ${{ inputs.channel }}
+      VERSION: ${{ inputs.version }}
+      UPDATE_TITLE: ${{ inputs.title }}
+      UPDATE_BODY: ${{ inputs.body }}
+    steps:
+      - name: Checkout official site repository
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Checkout game repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.game_repo }}
+          path: game
+
+      - name: Prepare HTML5 release folder
+        run: |
+          mkdir -p release
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='README.md' \
+            --exclude='docs' \
+            game/ release/
+          test -f release/index.html
+
+      - name: Setup butler
+        uses: itchio/setup-butler@v1
+
+      - name: Upload to itch.io
+        run: |
+          if [ -z "$BUTLER_API_KEY" ]; then
+            echo "BUTLER_API_KEY is not set. Add it as a repository secret."
+            exit 1
+          fi
+          butler push release "$ITCH_TARGET:$ITCH_CHANNEL" --userversion "$VERSION" --if-changed
+
+      - name: Write HP news and itch devlog draft
+        working-directory: site
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+
+          const now = new Date().toISOString().slice(0, 10);
+          const version = process.env.VERSION || 'v0.0.0';
+          const title = process.env.UPDATE_TITLE || 'ゲームを更新しました';
+          const body = process.env.UPDATE_BODY || 'ゲーム本体を更新しました。';
+          const itchTarget = process.env.ITCH_TARGET || '';
+          const channel = process.env.ITCH_CHANNEL || 'html5';
+          const gameUrl = itchTarget ? `https://${itchTarget.replace('/', '.itch.io/')}` : 'https://sengokugekokuzyou.github.io/';
+          const idBase = `${now}-itch-${version}`.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-');
+          const news = JSON.parse(fs.readFileSync('news.json', 'utf8'));
+          const updates = Array.isArray(news.updates) ? news.updates : [];
+
+          const item = {
+            id: idBase,
+            date: now,
+            category: 'itch.io更新',
+            title,
+            body: `${body} / version: ${version} / channel: ${channel}`,
+            url: gameUrl,
+            approved: true,
+            discord: true,
+            source: 'itch'
+          };
+
+          news.updates = [item, ...updates.filter((entry) => entry.id !== item.id)];
+          fs.writeFileSync('news.json', `${JSON.stringify(news, null, 2)}\n`, 'utf8');
+
+          fs.mkdirSync('devlogs', { recursive: true });
+          const devlog = [
+            `# ${title}`,
+            '',
+            `公開日: ${now}`,
+            `バージョン: ${version}`,
+            `itch.io: ${gameUrl}`,
+            '',
+            '## 更新内容',
+            '',
+            body,
+            '',
+            '## 公開メモ',
+            '',
+            `- butler channel: ${channel}`,
+            '- HPとDiscordには自動反映済み。',
+            '- itch.ioのDeveloper Logsへ投稿する場合は、この内容を確認して貼り付ける。',
+            ''
+          ].join('\n');
+          fs.writeFileSync(path.join('devlogs', `${idBase}.md`), devlog, 'utf8');
+          NODE
+
+      - name: Commit HP news and devlog draft
+        working-directory: site
+        run: |
+          if git diff --quiet -- news.json devlogs; then
+            echo "No site changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json devlogs
+          git commit -m "Log itch.io deployment"
+          git push
