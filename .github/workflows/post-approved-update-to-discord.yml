@@ -14,14 +14,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Build Discord payload
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const data = JSON.parse(fs.readFileSync('news.json', 'utf8'));
-          const updates = Array.isArray(data.updates) ? data.updates : [];
-          const item = updates.find((entry) => entry.approved === true && entry.discord === true);
+          const { execSync } = require('child_process');
+
+          const current = JSON.parse(fs.readFileSync('news.json', 'utf8'));
+          const currentUpdates = Array.isArray(current.updates) ? current.updates : [];
+          const approvedForDiscord = (entry) => entry && entry.approved === true && entry.discord === true;
+          const beforeSha = process.env.BEFORE_SHA;
+          const isManualRun = process.env.EVENT_NAME === 'workflow_dispatch';
+
+          let oldIds = new Set();
+          if (!isManualRun && beforeSha && !/^0+$/.test(beforeSha)) {
+            try {
+              const previousText = execSync(`git show ${beforeSha}:news.json`, { encoding: 'utf8' });
+              const previous = JSON.parse(previousText);
+              const previousUpdates = Array.isArray(previous.updates) ? previous.updates : [];
+              oldIds = new Set(previousUpdates.filter(approvedForDiscord).map((entry) => entry.id));
+            } catch (error) {
+              console.log('Previous news.json not found; posting first approved update if available.');
+            }
+          }
+
+          const item = currentUpdates.find((entry) => approvedForDiscord(entry) && (isManualRun || !oldIds.has(entry.id)));
 
           if (!item) {
             fs.writeFileSync('payload.json', JSON.stringify({ skip: true }));
@@ -48,7 +71,7 @@ jobs:
             exit 0
           fi
           if grep -q '"skip":true' payload.json; then
-            echo "No approved Discord update. Skipping."
+            echo "No newly approved Discord update. Skipping."
             exit 0
           fi
           curl -sS -H "Content-Type: application/json" -d @payload.json "$DISCORD_WEBHOOK_URL"
