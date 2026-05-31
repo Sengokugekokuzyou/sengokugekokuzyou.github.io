@@ -1,6 +1,16 @@
 {
   "updates": [
     {
+      "id": "2026-06-01-discord-test-0106",
+      "date": "2026-06-01",
+      "category": "Discord接続テスト",
+      "title": "Discord自動投稿の接続テストです",
+      "body": "この投稿が更新情報チャンネルに表示されれば、公式HPからDiscordへの自動発信が成功しています。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
       "id": "2026-06-01-automation-ready",
       "date": "2026-06-01",
       "category": "運用自動化",
