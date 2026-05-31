@@ -1,6 +1,16 @@
 {
   "updates": [
     {
+      "id": "2026-06-01-automation-ready",
+      "date": "2026-06-01",
+      "category": "運用自動化",
+      "title": "更新情報の自動発信設定が完了しました",
+      "body": "公式HP、Discord、YouTube新着検知をつなぐ更新情報の自動反映フローを設定しました。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
       "id": "2026-06-01-official-site-open",
       "date": "2026-06-01",
       "category": "公式HP",
