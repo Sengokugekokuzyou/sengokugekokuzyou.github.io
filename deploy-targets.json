@@ -14,7 +14,7 @@
       "id": "samurai-cypher",
       "enabled": true,
       "title": "戦国下剋上BEATS - SAMURAI CYPHER -",
-      "game_repo": "",
+      "game_repo": "Sengokugekokuzyou/samurai-cypher",
       "itch_target": "sengokugekokujobeats/beats-samurai-cypher",
       "itch_channel": "html5",
       "state_file": ".deploy-state/samurai-cypher.sha",
