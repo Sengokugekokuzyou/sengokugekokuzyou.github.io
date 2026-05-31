@@ -12,7 +12,7 @@
     },
     {
       "id": "samurai-cypher",
-      "enabled": false,
+      "enabled": true,
       "title": "戦国下剋上BEATS - SAMURAI CYPHER -",
       "game_repo": "",
       "itch_target": "",
@@ -22,7 +22,7 @@
     },
     {
       "id": "sengoku-tenshoku",
-      "enabled": false,
+      "enabled": true,
       "title": "戦国転職血統録",
       "game_repo": "",
       "itch_target": "",
@@ -32,7 +32,7 @@
     },
     {
       "id": "chigiri",
-      "enabled": false,
+      "enabled": true,
       "title": "契りノ血脈 CHIGIRI",
       "game_repo": "",
       "itch_target": "",
