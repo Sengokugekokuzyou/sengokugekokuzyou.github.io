@@ -15,10 +15,10 @@
       "enabled": true,
       "title": "戦国下剋上BEATS - SAMURAI CYPHER -",
       "game_repo": "",
-      "itch_target": "",
+      "itch_target": "sengokugekokujobeats/beats-samurai-cypher",
       "itch_channel": "html5",
       "state_file": ".deploy-state/samurai-cypher.sha",
-      "public_url": ""
+      "public_url": "https://sengokugekokujobeats.itch.io/beats-samurai-cypher"
     },
     {
       "id": "sengoku-tenshoku",
