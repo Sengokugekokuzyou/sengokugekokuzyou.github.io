@@ -67,11 +67,11 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
-            echo "DISCORD_WEBHOOK_URL is not set. Skipping."
-            exit 0
+            echo "DISCORD_WEBHOOK_URL is not set. Add it as a repository secret."
+            exit 1
           fi
           if grep -q '"skip":true' payload.json; then
             echo "No newly approved Discord update. Skipping."
             exit 0
           fi
-          curl -sS -H "Content-Type: application/json" -d @payload.json "$DISCORD_WEBHOOK_URL"
+          curl -f -sS -H "Content-Type: application/json" -d @payload.json "$DISCORD_WEBHOOK_URL"
