@@ -11,6 +11,11 @@
 
 ## YouTube自動発信
 
+対象チャンネル:
+
+- URL: https://youtube.com/channel/UChtURL_MY58O7nfhmaYOMaw
+- Channel ID: `UChtURL_MY58O7nfhmaYOMaw`
+
 `sync-youtube-updates.yml` が毎時1回、YouTubeの公開フィードを確認します。新しい動画があれば `news.json` に以下の形式で追加されます。
 
 ```json
@@ -31,14 +36,14 @@
 
 ## YouTube Variables設定
 
-YouTube自動発信を有効化するには、GitHubリポジトリの設定で以下を追加します。
+チャンネルIDはワークフローに既定値として設定済みです。変更したい場合だけ、GitHubリポジトリの設定で以下を追加します。
 
 - Repository: `Sengokugekokuzyou/sengokugekokuzyou.github.io`
 - Settings > Secrets and variables > Actions > Variables > New repository variable
 - Name: `YOUTUBE_CHANNEL_ID`
 - Value: YouTubeチャンネルID
 
-任意で以下も追加します。
+任意で以下も変更できます。
 
 - Name: `YOUTUBE_CHANNEL_HANDLE`
 - Value: `@戦国下剋上BEATS`
