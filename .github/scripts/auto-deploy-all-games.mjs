@@ -23,7 +23,10 @@ for (const target of targets) {
     console.log(`Skipping disabled target: ${target.id}`);
     continue;
   }
-  validateTarget(target);
+  if (!isConfigured(target)) {
+    console.log(`Target is ON but waiting for repository/itch settings: ${target.id}`);
+    continue;
+  }
 
   const gameDir = path.join(workDir, `game-${target.id}`);
   const releaseDir = path.join(workDir, `release-${target.id}`);
@@ -43,7 +46,8 @@ for (const target of targets) {
   run(`rsync -av --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='docs' ${shellArg(`${gameDir}/`)} ${shellArg(`${releaseDir}/`)}`);
 
   if (!fs.existsSync(path.join(releaseDir, 'index.html'))) {
-    throw new Error(`${target.title} release folder does not contain index.html`);
+    console.log(`${target.title} does not contain index.html; skipping upload until the game build is ready.`);
+    continue;
   }
 
   const shortSha = currentSha.slice(0, 7);
@@ -114,10 +118,9 @@ function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }
   fs.writeFileSync(path.join(devlogsDir, `${id}.md`), devlog, 'utf8');
 }
 
-function validateTarget(target) {
-  for (const key of ['id', 'title', 'game_repo', 'itch_target', 'itch_channel', 'state_file']) {
-    if (!target[key]) throw new Error(`Deploy target ${target.id || '(unknown)'} is missing ${key}`);
-  }
+function isConfigured(target) {
+  const required = ['id', 'title', 'game_repo', 'itch_target', 'itch_channel', 'state_file'];
+  return required.every((key) => Boolean(target[key]));
 }
 
 function run(command) {
