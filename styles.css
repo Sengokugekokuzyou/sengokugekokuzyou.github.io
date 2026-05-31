@@ -160,11 +160,20 @@ h3 {
   line-height: 1.8;
 }
 
+.small-lead {
+  max-width: 760px;
+  font-size: clamp(16px, 1.8vw, 20px);
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
+}
+
+.compact-actions {
+  margin-top: 24px;
 }
 
 .button {
@@ -190,7 +199,8 @@ h3 {
 .hero-panel,
 .panel,
 .card,
-.update-item {
+.update-item,
+.youtube-card {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
@@ -274,6 +284,26 @@ h3 {
 .section {
   padding: clamp(58px, 8vw, 104px) clamp(20px, 6vw, 88px);
   border-bottom: 1px solid var(--line);
+}
+
+.youtube-section {
+  background: linear-gradient(135deg, rgba(216, 58, 49, 0.18), rgba(0, 0, 0, 0.1));
+}
+
+.youtube-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: clamp(22px, 5vw, 58px);
+  align-items: stretch;
+}
+
+.youtube-card {
+  padding: 26px;
+}
+
+.youtube-card p {
+  color: var(--muted);
+  line-height: 1.78;
 }
 
 .section-heading {
@@ -386,7 +416,8 @@ h3 {
   .game-grid,
   .updates-list,
   .split,
-  .status-band {
+  .status-band,
+  .youtube-layout {
     grid-template-columns: 1fr;
   }
 
