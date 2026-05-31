@@ -1,0 +1,44 @@
+{
+  "targets": [
+    {
+      "id": "sengoku-blood",
+      "enabled": true,
+      "title": "血華の系譜",
+      "game_repo": "Sengokugekokuzyou/sengoku-blood-",
+      "itch_target": "sengokugekokujobeats/kekkanokeifu",
+      "itch_channel": "html5",
+      "state_file": ".deploy-state/sengoku-blood-.sha",
+      "public_url": "https://sengokugekokujobeats.itch.io/kekkanokeifu"
+    },
+    {
+      "id": "samurai-cypher",
+      "enabled": false,
+      "title": "戦国下剋上BEATS - SAMURAI CYPHER -",
+      "game_repo": "",
+      "itch_target": "",
+      "itch_channel": "html5",
+      "state_file": ".deploy-state/samurai-cypher.sha",
+      "public_url": ""
+    },
+    {
+      "id": "sengoku-tenshoku",
+      "enabled": false,
+      "title": "戦国転職血統録",
+      "game_repo": "",
+      "itch_target": "",
+      "itch_channel": "html5",
+      "state_file": ".deploy-state/sengoku-tenshoku.sha",
+      "public_url": ""
+    },
+    {
+      "id": "chigiri",
+      "enabled": false,
+      "title": "契りノ血脈 CHIGIRI",
+      "game_repo": "",
+      "itch_target": "",
+      "itch_channel": "html5",
+      "state_file": ".deploy-state/chigiri.sha",
+      "public_url": ""
+    }
+  ]
+}
