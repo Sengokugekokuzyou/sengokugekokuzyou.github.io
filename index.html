@@ -10,7 +10,10 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="./">戦国下剋上BEATS</a>
+    <a class="brand" href="./" aria-label="戦国下剋上BEATS ホーム">
+      <span class="brand-mark">BEATS</span>
+      <span>戦国下剋上BEATS</span>
+    </a>
     <nav class="nav" aria-label="公式リンク">
       <a href="#updates">更新情報</a>
       <a href="#games">ゲーム</a>
@@ -21,15 +24,34 @@
 
   <main>
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Sengoku Hip-Hop / AI Music / Web Games</p>
-        <h1>戦国の物語を、音楽とゲームで動かす。</h1>
-        <p class="lead">戦国下剋上BEATSは、戦国HIPHOP、AI音楽制作、Webゲーム開発を一本の世界観で育てる創作プロジェクトです。</p>
-        <div class="actions">
-          <a class="button primary" href="https://discord.gg/v37VSgrVHC">公式Discordへ</a>
-          <a class="button" href="https://sengokugekokujobeats.itch.io/kekkanokeifu">血華の系譜を遊ぶ</a>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Sengoku Hip-Hop / AI Music / Web Games</p>
+          <h1>戦国を鳴らせ。物語を遊べ。</h1>
+          <p class="lead">戦国下剋上BEATSは、戦国HIPHOP、AI音楽、Webゲームを一本の世界観で育てる創作プロジェクトです。</p>
+          <div class="actions">
+            <a class="button primary" href="https://sengokugekokujobeats.itch.io/kekkanokeifu">ゲームを遊ぶ</a>
+            <a class="button" href="https://discord.gg/v37VSgrVHC">公式Discord</a>
+          </div>
         </div>
+        <aside class="hero-panel" aria-label="プロジェクト状況">
+          <p class="panel-label">Live Ops</p>
+          <h2>HP / Discord / YouTube / itch.io 自動連携中</h2>
+          <div class="signal-list">
+            <span>公式HP更新</span>
+            <span>Discord告知</span>
+            <span>YouTube新着検知</span>
+            <span>itch.io更新準備</span>
+          </div>
+        </aside>
       </div>
+    </section>
+
+    <section class="status-band" aria-label="公式リンク">
+      <a href="https://www.youtube.com/@戦国下剋上BEATS"><span>YouTube</span><strong>戦国HIPHOP</strong></a>
+      <a href="https://note.com/shirokurochannel"><span>note</span><strong>制作記録</strong></a>
+      <a href="https://x.com/sirokuro_selbin"><span>X</span><strong>速報</strong></a>
+      <a href="https://discord.gg/v37VSgrVHC"><span>Discord</span><strong>公式コミュニティ</strong></a>
     </section>
 
     <section class="section" id="updates">
@@ -48,22 +70,25 @@
       </div>
     </section>
 
-    <section class="section" id="games">
+    <section class="section works" id="games">
       <div class="section-heading">
-        <p class="eyebrow">Games</p>
-        <h2>ゲーム作品</h2>
+        <div>
+          <p class="eyebrow">Games</p>
+          <h2>ゲーム作品</h2>
+        </div>
       </div>
       <div class="game-grid">
-        <article class="card">
+        <article class="card featured-card">
           <span class="status live">公開中</span>
           <h3>血華の系譜</h3>
           <p>戦国血統の物語を軸にしたWebゲーム。itch.ioで公開中です。</p>
           <a href="https://sengokugekokujobeats.itch.io/kekkanokeifu">作品ページ</a>
         </article>
         <article class="card">
-          <span class="status dev">開発中</span>
+          <span class="status live">公開中</span>
           <h3>SAMURAI CYPHER</h3>
-          <p>戦国下剋上BEATSの楽曲と連動するリズムゲーム企画です。</p>
+          <p>戦国下剋上BEATSの楽曲と連動するリズムゲーム。自動更新リポジトリ準備中です。</p>
+          <a href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">作品ページ</a>
         </article>
         <article class="card">
           <span class="status dev">開発中</span>
@@ -84,7 +109,7 @@
         <h2>公式Discord稼働中</h2>
       </div>
       <div class="panel">
-        <p>更新情報、感想と要望、不具合報告を受け付ける公式Discordです。GitHub更新通知は非公開チャンネルで運用します。</p>
+        <p>更新情報、感想と要望、不具合報告を受け付ける公式Discordです。GitHub連携と更新告知の自動投稿も稼働しています。</p>
         <a class="button primary" href="https://discord.gg/v37VSgrVHC">Discordに参加</a>
       </div>
     </section>
