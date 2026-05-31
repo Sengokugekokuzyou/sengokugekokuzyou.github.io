@@ -17,8 +17,8 @@ jobs:
 
       - name: Sync YouTube feed to news.json
         env:
-          YOUTUBE_CHANNEL_ID: ${{ vars.YOUTUBE_CHANNEL_ID }}
-          YOUTUBE_CHANNEL_HANDLE: ${{ vars.YOUTUBE_CHANNEL_HANDLE }}
+          YOUTUBE_CHANNEL_ID: ${{ vars.YOUTUBE_CHANNEL_ID || 'UChtURL_MY58O7nfhmaYOMaw' }}
+          YOUTUBE_CHANNEL_HANDLE: ${{ vars.YOUTUBE_CHANNEL_HANDLE || '@戦国下剋上BEATS' }}
         run: node .github/scripts/sync-youtube-updates.mjs
 
       - name: Commit news updates
