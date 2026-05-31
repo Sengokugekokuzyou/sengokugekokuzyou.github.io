@@ -1,0 +1,14 @@
+{
+  "updates": [
+    {
+      "id": "2026-06-01-official-site-open",
+      "date": "2026-06-01",
+      "category": "公式HP",
+      "title": "戦国下剋上BEATS公式HPを公開しました",
+      "body": "作品情報、公式Discord、広告収益化準備の情報をまとめる公式HPを公開しました。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    }
+  ]
+}
