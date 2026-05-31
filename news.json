@@ -1,6 +1,16 @@
 {
   "updates": [
     {
+      "id": "2026-06-01-discord-channel-test-0115",
+      "date": "2026-06-01",
+      "category": "Discord接続テスト",
+      "title": "更新情報チャンネルへの自動投稿テストです",
+      "body": "Webhookの投稿先を更新情報チャンネルへ差し替えた後の確認投稿です。ここに表示されれば完成です。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
       "id": "2026-06-01-discord-test-0110",
       "date": "2026-06-01",
       "category": "Discord接続テスト",
