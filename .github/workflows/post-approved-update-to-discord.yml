@@ -48,7 +48,7 @@ jobs:
 
           if (!item) {
             fs.writeFileSync('payload.json', JSON.stringify({ skip: true }));
-            return;
+            process.exit(0);
           }
 
           const lines = [
