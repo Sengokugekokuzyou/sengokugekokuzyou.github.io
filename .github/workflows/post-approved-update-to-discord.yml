@@ -1,0 +1,54 @@
+name: Post approved update to Discord
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - news.json
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Discord payload
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const data = JSON.parse(fs.readFileSync('news.json', 'utf8'));
+          const updates = Array.isArray(data.updates) ? data.updates : [];
+          const item = updates.find((entry) => entry.approved === true && entry.discord === true);
+
+          if (!item) {
+            fs.writeFileSync('payload.json', JSON.stringify({ skip: true }));
+            return;
+          }
+
+          const lines = [
+            `**${item.title || '戦国下剋上BEATS 更新情報'}**`,
+            item.date ? `日付: ${item.date}` : null,
+            item.category ? `分類: ${item.category}` : null,
+            item.body || null,
+            item.url || null
+          ].filter(Boolean);
+
+          fs.writeFileSync('payload.json', JSON.stringify({ content: lines.join('\n') }));
+          NODE
+
+      - name: Post to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set. Skipping."
+            exit 0
+          fi
+          if grep -q '"skip":true' payload.json; then
+            echo "No approved Discord update. Skipping."
+            exit 0
+          fi
+          curl -sS -H "Content-Type: application/json" -d @payload.json "$DISCORD_WEBHOOK_URL"
