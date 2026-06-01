@@ -20,7 +20,7 @@ jobs:
           path: site
 
       - name: Setup butler
-        uses: itchio/setup-butler@v1
+        uses: remarkablegames/setup-butler@9252a0a644ee359d76d3fd12b244b57a2b1faa09
 
       - name: Check all configured games and deploy changed builds
         run: |
