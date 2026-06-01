@@ -1,6 +1,19 @@
 {
   "updates": [
     {
+      "id": "itch-auto-samurai-cypher-510f1a7",
+      "date": "2026-06-01",
+      "category": "itch.io自動更新",
+      "title": "戦国下剋上BEATS - SAMURAI CYPHER -を自動更新しました",
+      "body": "ゲーム本体の新しいコミット 510f1a7 を検知し、itch.ioへ自動アップロードしました。",
+      "url": "https://sengokugekokujobeats.itch.io/beats-samurai-cypher",
+      "approved": true,
+      "discord": true,
+      "source": "itch-auto",
+      "game": "samurai-cypher",
+      "commit": "https://github.com/Sengokugekokuzyou/samurai-cypher/commit/510f1a781b8f8cdc29d8167a9a9906e8ed4b5cfb"
+    },
+    {
       "id": "youtube-QZT5-TXeS-E",
       "date": "2026-06-01",
       "category": "YouTube",
