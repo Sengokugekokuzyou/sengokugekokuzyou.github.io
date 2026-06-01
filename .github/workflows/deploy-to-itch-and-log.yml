@@ -66,7 +66,7 @@ jobs:
           test -f release/index.html
 
       - name: Setup butler
-        uses: itchio/setup-butler@v1
+        uses: remarkablegames/setup-butler@9252a0a644ee359d76d3fd12b244b57a2b1faa09
 
       - name: Upload to itch.io
         run: |
