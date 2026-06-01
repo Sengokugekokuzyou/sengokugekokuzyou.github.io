@@ -32,18 +32,23 @@
           <p class="lead">戦国下剋上BEATSは、戦国HIPHOP、AI音楽、Webゲームを一本の世界観で育てる創作プロジェクトです。</p>
           <div class="actions">
             <a class="button primary" href="https://www.youtube.com/@戦国下剋上BEATS">YouTubeを見る</a>
-            <a class="button" href="https://sengokugekokujobeats.itch.io/kekkanokeifu">ゲームを遊ぶ</a>
+            <a class="button" href="#games">ゲームを遊ぶ</a>
             <a class="button" href="https://discord.gg/v37VSgrVHC">公式Discord</a>
           </div>
         </div>
         <aside class="hero-panel" aria-label="プロジェクト状況">
           <p class="panel-label">Live Ops</p>
           <h2>HP / Discord / YouTube / itch.io 自動連携中</h2>
+          <div class="metric-grid" aria-label="運用状況">
+            <span><strong>3</strong><small>公開ゲーム</small></span>
+            <span><strong>15分</strong><small>YouTube確認</small></span>
+            <span><strong>1時間</strong><small>ゲーム更新確認</small></span>
+          </div>
           <div class="signal-list">
             <span>公式HP更新</span>
             <span>Discord告知</span>
             <span>YouTube新着検知</span>
-            <span>itch.io更新準備</span>
+            <span>itch.io自動更新</span>
           </div>
         </aside>
       </div>
@@ -68,9 +73,11 @@
           </div>
         </div>
         <div class="youtube-card">
-          <span class="status live">自動発信</span>
-          <h3>新着検知フロー</h3>
-          <p>YouTube公開フィードを毎時確認し、新しい動画を `news.json` に追加。HP更新情報とDiscord告知へ連動します。</p>
+          <span class="status live">最新動画</span>
+          <div data-latest-youtube>
+            <h3>新着動画を確認中</h3>
+            <p>YouTube更新情報を読み込んでいます。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -103,24 +110,24 @@
           <span class="status live">公開中</span>
           <h3>血華の系譜</h3>
           <p>戦国血統の物語を軸にしたWebゲーム。itch.ioで公開中です。</p>
-          <a href="https://sengokugekokujobeats.itch.io/kekkanokeifu">作品ページ</a>
+          <a href="kekkanokeifu.html">作品詳細</a>
         </article>
         <article class="card">
           <span class="status live">公開中</span>
           <h3>SAMURAI CYPHER</h3>
-          <p>戦国下剋上BEATSの楽曲と連動するリズムゲーム。自動更新リポジトリ準備中です。</p>
-          <a href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">作品ページ</a>
+          <p>戦国下剋上BEATSの楽曲と連動するリズムゲーム。GitHub更新からitch.io公開まで自動連携します。</p>
+          <a href="samurai-cypher.html">作品詳細</a>
         </article>
         <article class="card">
           <span class="status dev">開発中</span>
           <h3>戦国転職血統録</h3>
-          <p>戦国武将の血統と転職要素を組み合わせた育成ゲーム企画です。</p>
+          <p>戦国武将の血統と転職要素を組み合わせた育成ゲーム企画です。今回は棚卸し対象外として保留中です。</p>
         </article>
         <article class="card">
           <span class="status live">公開中</span>
           <h3>サムライブリード - 契りノ血脈 -</h3>
           <p>SAMURAI BREED - Bloodline Pact -。Vite / JavaScript / LocalStorageを基盤にした新作Webゲームです。</p>
-          <a href="https://sengokugekokujobeats.itch.io/samurai-breed">作品ページ</a>
+          <a href="samurai-breed.html">作品詳細</a>
         </article>
       </div>
     </section>
