@@ -1,6 +1,19 @@
 {
   "updates": [
     {
+      "id": "itch-auto-samurai-breed-0f05311",
+      "date": "2026-06-01",
+      "category": "itch.io自動更新",
+      "title": "サムライブリード - 契りノ血脈 -を自動更新しました",
+      "body": "ゲーム本体の新しいコミット 0f05311 を検知し、itch.ioへ自動アップロードしました。",
+      "url": "https://sengokugekokujobeats.itch.io/samurai-breed",
+      "approved": true,
+      "discord": true,
+      "source": "itch-auto",
+      "game": "samurai-breed",
+      "commit": "https://github.com/Sengokugekokuzyou/samurai-breed/commit/0f05311d5f3b5b57b83fa82f45597307cf3d0aa9"
+    },
+    {
       "id": "itch-auto-samurai-cypher-510f1a7",
       "date": "2026-06-01",
       "category": "itch.io自動更新",
