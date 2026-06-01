@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
     steps:
       - name: Checkout official site repository
         uses: actions/checkout@v4
@@ -25,6 +26,45 @@ jobs:
       - name: Check all configured games and deploy changed builds
         run: |
           node site/.github/scripts/auto-deploy-all-games.mjs
+
+      - name: Post deployed updates to Discord
+        run: |
+          if [ ! -f site/.deploy-discord-payload.json ]; then
+            echo "No deployed updates to post."
+            exit 0
+          fi
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set. Add it as a repository secret."
+            exit 1
+          fi
+          node <<'NODE'
+          const fs = require('fs');
+          const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+          const items = JSON.parse(fs.readFileSync('site/.deploy-discord-payload.json', 'utf8'));
+
+          async function post(item) {
+            const lines = [
+              `**${item.title || '戦国下剋上BEATS 更新情報'}**`,
+              item.date ? `日付: ${item.date}` : null,
+              item.category ? `分類: ${item.category}` : null,
+              item.body || null,
+              item.url || null
+            ].filter(Boolean);
+            const response = await fetch(webhookUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ content: lines.join('\n') })
+            });
+            if (!response.ok) {
+              throw new Error(`Discord post failed: ${response.status} ${await response.text()}`);
+            }
+          }
+
+          Promise.all(items.map(post)).catch((error) => {
+            console.error(error);
+            process.exit(1);
+          });
+          NODE
 
       - name: Commit automation results
         working-directory: site
