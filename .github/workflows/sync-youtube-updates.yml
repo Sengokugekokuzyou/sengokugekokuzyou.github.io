@@ -2,7 +2,7 @@ name: Sync YouTube updates
 
 on:
   schedule:
-    - cron: '15 * * * *'
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 permissions:
