@@ -6,6 +6,7 @@ const siteDir = path.resolve('site');
 const workDir = process.cwd();
 const configPath = path.join(siteDir, 'deploy-targets.json');
 const newsPath = path.join(siteDir, 'news.json');
+const discordPayloadPath = path.join(siteDir, '.deploy-discord-payload.json');
 const butlerKey = process.env.BUTLER_API_KEY || '';
 
 if (!butlerKey) {
@@ -17,6 +18,7 @@ const targets = Array.isArray(config.targets) ? config.targets : [];
 let news = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
 news.updates = Array.isArray(news.updates) ? news.updates : [];
 let changedCount = 0;
+const deployedItems = [];
 
 for (const target of targets) {
   if (!target.enabled) {
@@ -54,13 +56,17 @@ for (const target of targets) {
   const version = `auto-${shortSha}`;
   run(`butler push ${shellArg(releaseDir)} ${shellArg(`${target.itch_target}:${target.itch_channel}`)} --userversion ${shellArg(version)} --if-changed`);
 
-  addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir });
+  const item = addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir });
+  deployedItems.push(item);
   fs.mkdirSync(path.dirname(statePath), { recursive: true });
   fs.writeFileSync(statePath, `${currentSha}\n`, 'utf8');
   changedCount += 1;
 }
 
 fs.writeFileSync(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
+if (deployedItems.length > 0) {
+  fs.writeFileSync(discordPayloadPath, `${JSON.stringify(deployedItems, null, 2)}\n`, 'utf8');
+}
 console.log(`Deployed ${changedCount} changed game(s).`);
 
 function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }) {
@@ -116,6 +122,7 @@ function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }
     ''
   ].join('\n');
   fs.writeFileSync(path.join(devlogsDir, `${id}.md`), devlog, 'utf8');
+  return item;
 }
 
 function isConfigured(target) {
