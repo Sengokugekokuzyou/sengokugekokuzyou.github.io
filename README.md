@@ -31,6 +31,12 @@ https://sengokugekokuzyou.github.io/
 
 `sync-youtube-updates.yml` がYouTube公開フィードを確認し、新しい動画を `news.json` に追加します。HPのYouTube欄と更新情報欄に反映され、Discord通知にもつながります。
 
+### Apple Music更新
+
+`sync-apple-music-updates.yml` がApple Music / iTunes公開APIを確認し、新しい配信リリースを `news.json` に追加します。HPの更新情報欄に反映され、Discord通知にもつながります。公開日が未来の配信予定は、公開日を迎えるまで通知しません。
+
+初回実行時は過去リリースを大量通知しないよう、既定では最新1件だけを取り込みます。以後は `.music-release-state/apple-music.json` に記録した既知リリースとの差分だけを通知します。
+
 ### ゲーム更新とitch.io反映
 
 `auto-deploy-itch-on-game-change.yml` が `deploy-targets.json` に登録されたゲームリポジトリを確認します。変更があればbutlerでitch.ioへアップロードし、`news.json`、`devlogs/`、`.deploy-state/` を更新します。Discord通知はこのワークフロー内から直接送信します。
@@ -55,6 +61,15 @@ https://sengokugekokuzyou.github.io/
 
 - `DISCORD_WEBHOOK_URL`
 - `BUTLER_API_KEY`
+
+## Variables
+
+- `YOUTUBE_CHANNEL_ID`
+- `YOUTUBE_CHANNEL_HANDLE`
+- `APPLE_MUSIC_ARTIST_ID`
+- `APPLE_MUSIC_COUNTRY`
+- `APPLE_MUSIC_INITIAL_IMPORT_LIMIT`
+- `APPLE_MUSIC_UPDATE_LIMIT`
 
 ## 運用方針
 

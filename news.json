@@ -12,6 +12,21 @@
       "source": "youtube"
     },
     {
+      "id": "apple-music-1893806596",
+      "date": "2026-05-29",
+      "category": "Apple Music",
+      "title": "Apple Music配信: 友誼の果て 魂の共闘 (Yuugi No Hate Tamashii No Kyoutou) - Eternal Bond of the West / Ishida Mitsunari & Otani Yoshitsugu - Single",
+      "body": "Apple Musicで配信リリースを確認しました。",
+      "url": "https://music.apple.com/jp/album/%E5%8F%8B%E8%AA%BC%E3%81%AE%E6%9E%9C%E3%81%A6-%E9%AD%82%E3%81%AE%E5%85%B1%E9%97%98-yuugi-no-hate-tamashii-no-kyoutou-eternal/1893806596?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "1893806596",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bc/d9/04/bcd9041f-847f-d0bb-1be2-a1462859f673/artwork.jpg/100x100bb.jpg"
+    },
+    {
       "id": "itch-auto-samurai-breed-0f05311",
       "date": "2026-06-01",
       "category": "itch.io自動更新",

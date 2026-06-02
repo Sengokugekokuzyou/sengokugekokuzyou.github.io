@@ -1,0 +1,36 @@
+name: Sync Apple Music updates
+
+on:
+  schedule:
+    - cron: '25 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync Apple Music releases to news.json
+        env:
+          APPLE_MUSIC_ARTIST_ID: ${{ vars.APPLE_MUSIC_ARTIST_ID || '1888867608' }}
+          APPLE_MUSIC_COUNTRY: ${{ vars.APPLE_MUSIC_COUNTRY || 'JP' }}
+          APPLE_MUSIC_INITIAL_IMPORT_LIMIT: ${{ vars.APPLE_MUSIC_INITIAL_IMPORT_LIMIT || '1' }}
+          APPLE_MUSIC_UPDATE_LIMIT: ${{ vars.APPLE_MUSIC_UPDATE_LIMIT || '10' }}
+        run: node .github/scripts/sync-apple-music-updates.mjs
+
+      - name: Commit Apple Music updates
+        run: |
+          if git diff --quiet -- news.json .music-release-state/apple-music.json; then
+            echo "No Apple Music changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json .music-release-state/apple-music.json
+          git commit -m "Sync Apple Music updates"
+          git push
