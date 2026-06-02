@@ -37,6 +37,8 @@ https://sengokugekokuzyou.github.io/
 
 初回実行時は過去リリースを大量通知しないよう、既定では最新1件だけを取り込みます。以後は `.music-release-state/apple-music.json` に記録した既知リリースとの差分だけを通知します。
 
+Spotify Web APIは2026年のSpotify Developer仕様変更により、Development ModeでPremiumアカウントが必要です。Premiumを使わない間はSpotify APIでの自動検知は保留し、Apple Musicの検知結果にSpotifyアーティストページの導線を併記します。
+
 ### ゲーム更新とitch.io反映
 
 `auto-deploy-itch-on-game-change.yml` が `deploy-targets.json` に登録されたゲームリポジトリを確認します。変更があればbutlerでitch.ioへアップロードし、`news.json`、`devlogs/`、`.deploy-state/` を更新します。Discord通知はこのワークフロー内から直接送信します。
@@ -70,6 +72,7 @@ https://sengokugekokuzyou.github.io/
 - `APPLE_MUSIC_COUNTRY`
 - `APPLE_MUSIC_INITIAL_IMPORT_LIMIT`
 - `APPLE_MUSIC_UPDATE_LIMIT`
+- `SPOTIFY_ARTIST_URL`
 
 ## 運用方針
 

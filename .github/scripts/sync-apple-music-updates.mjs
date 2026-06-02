@@ -4,6 +4,7 @@ const artistId = process.env.APPLE_MUSIC_ARTIST_ID || '1888867608';
 const country = process.env.APPLE_MUSIC_COUNTRY || 'JP';
 const initialImportLimit = Number.parseInt(process.env.APPLE_MUSIC_INITIAL_IMPORT_LIMIT || '1', 10);
 const updateLimit = Number.parseInt(process.env.APPLE_MUSIC_UPDATE_LIMIT || '10', 10);
+const spotifyArtistUrl = process.env.SPOTIFY_ARTIST_URL || 'https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL';
 const newsPath = 'news.json';
 const statePath = '.music-release-state/apple-music.json';
 const today = process.env.APPLE_MUSIC_TODAY || new Date().toISOString().slice(0, 10);
@@ -60,9 +61,9 @@ for (const release of candidates.slice(0, Math.max(0, limit)).reverse()) {
   newUpdates.unshift({
     id,
     date: release.date,
-    category: 'Apple Music',
-    title: `Apple Music配信: ${release.name}`,
-    body: 'Apple Musicで配信リリースを確認しました。',
+    category: '音楽配信',
+    title: `配信リリース: ${release.name}`,
+    body: buildBody(),
     url: release.url,
     approved: true,
     discord: true,
@@ -70,7 +71,8 @@ for (const release of candidates.slice(0, Math.max(0, limit)).reverse()) {
     artist: 'Sengoku Gekokujo BEATS',
     releaseId: release.id,
     releaseType: release.collectionType,
-    artworkUrl: release.artworkUrl
+    artworkUrl: release.artworkUrl,
+    spotifyArtistUrl
   });
 }
 
@@ -95,6 +97,14 @@ console.log(`Added ${newUpdates.length} Apple Music update(s).`);
 function normalizeDate(value) {
   if (!value) return new Date().toISOString().slice(0, 10);
   return String(value).slice(0, 10);
+}
+
+function buildBody() {
+  const lines = ['Apple Musicで配信リリースを確認しました。'];
+  if (spotifyArtistUrl) {
+    lines.push(`Spotifyでも配信状況を確認できます: ${spotifyArtistUrl}`);
+  }
+  return lines.join('\n');
 }
 
 async function readJsonIfExists(path, fallback) {
