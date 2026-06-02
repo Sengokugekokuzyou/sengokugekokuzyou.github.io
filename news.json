@@ -1,6 +1,17 @@
 {
   "updates": [
     {
+      "id": "youtube-si2w_3kS4OU",
+      "date": "2026-06-02",
+      "category": "YouTube",
+      "title": "YouTube更新: 【祈りの白】細川ガラシャ ― 信仰に抱かれて散る / Silent Faith｜戦国R&B",
+      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
+      "url": "https://www.youtube.com/watch?v=si2w_3kS4OU",
+      "approved": true,
+      "discord": true,
+      "source": "youtube"
+    },
+    {
       "id": "itch-auto-samurai-breed-0f05311",
       "date": "2026-06-01",
       "category": "itch.io自動更新",
