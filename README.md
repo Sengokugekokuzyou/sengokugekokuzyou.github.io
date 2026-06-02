@@ -62,6 +62,8 @@ https://sengokugekokuzyou.github.io/
 
 外部リンクのクリックは `site.js` からGA4イベント `external_link_click` として送信します。主に itch.io、YouTube、Apple Music、Spotify、Discord、GitHub への送客確認に使います。
 
+検索向けの構造化データは、トップページに `WebSite`、各ゲーム作品ページに `VideoGame` を設定しています。Google Search Console導入後の検索理解補助として使います。
+
 ## 当面保留
 
 戦国転職血統録の棚卸しと自動化設定は当面保留です。
