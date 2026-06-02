@@ -21,16 +21,6 @@
       "public_url": "https://sengokugekokujobeats.itch.io/beats-samurai-cypher"
     },
     {
-      "id": "sengoku-tenshoku",
-      "enabled": true,
-      "title": "戦国転職血統録",
-      "game_repo": "",
-      "itch_target": "",
-      "itch_channel": "html5",
-      "state_file": ".deploy-state/sengoku-tenshoku.sha",
-      "public_url": ""
-    },
-    {
       "id": "samurai-breed",
       "enabled": true,
       "title": "サムライブリード - 契りノ血脈 -",
@@ -39,6 +29,16 @@
       "itch_channel": "html5",
       "state_file": ".deploy-state/samurai-breed.sha",
       "public_url": "https://sengokugekokujobeats.itch.io/samurai-breed"
+    },
+    {
+      "id": "sengoku-tenshoku",
+      "enabled": false,
+      "title": "戦国転職血統録",
+      "game_repo": "",
+      "itch_target": "",
+      "itch_channel": "html5",
+      "state_file": ".deploy-state/sengoku-tenshoku.sha",
+      "public_url": ""
     }
   ]
 }

@@ -41,6 +41,10 @@ https://sengokugekokuzyou.github.io/
 - `Sengokugekokuzyou/samurai-cypher`
 - `Sengokugekokuzyou/samurai-breed`
 
+血華の系譜で決めた「GitHub更新検知 → itch.ioアップロード → HP更新情報 → Discord通知 → devlogs下書き生成」の運用は、上記3作品すべてに展開済みです。
+
+戦国転職血統録は `deploy-targets.json` に待機枠だけ残し、repo / itch先が未確定のため `enabled: false` にしています。
+
 ### Discord告知
 
 手動承認済み更新は `post-approved-update-to-discord.yml` で投稿できます。ゲーム自動デプロイ時は、GitHub Actionsの仕様でワークフロー連鎖が止まらないよう、デプロイワークフローから直接Discordへ投稿します。

@@ -15,8 +15,9 @@ if (!butlerKey) {
 
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const targets = Array.isArray(config.targets) ? config.targets : [];
-let news = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
+const news = JSON.parse(fs.readFileSync(newsPath, 'utf8'));
 news.updates = Array.isArray(news.updates) ? news.updates : [];
+
 let changedCount = 0;
 const deployedItems = [];
 
@@ -26,7 +27,7 @@ for (const target of targets) {
     continue;
   }
   if (!isConfigured(target)) {
-    console.log(`Target is ON but waiting for repository/itch settings: ${target.id}`);
+    console.log(`Target is enabled but waiting for repository/itch settings: ${target.id}`);
     continue;
   }
 
@@ -45,12 +46,24 @@ for (const target of targets) {
 
   fs.rmSync(releaseDir, { recursive: true, force: true });
   fs.mkdirSync(releaseDir, { recursive: true });
-  run(`rsync -av --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='docs' ${shellArg(`${gameDir}/`)} ${shellArg(`${releaseDir}/`)}`);
 
-  if (!fs.existsSync(path.join(releaseDir, 'index.html'))) {
-    console.log(`${target.title} does not contain index.html; skipping upload until the game build is ready.`);
+  const releaseSource = resolveReleaseSource(gameDir);
+  if (!releaseSource) {
+    console.log(`${target.title} does not contain index.html or dist/index.html; skipping upload until the game build is ready.`);
     continue;
   }
+
+  run([
+    'rsync -av',
+    "--exclude='.git'",
+    "--exclude='.github'",
+    "--exclude='README.md'",
+    "--exclude='docs'",
+    "--exclude='node_modules'",
+    "--exclude='package-lock.json'",
+    `${shellArg(`${releaseSource}/`)}`,
+    `${shellArg(`${releaseDir}/`)}`
+  ].join(' '));
 
   const shortSha = currentSha.slice(0, 7);
   const version = `auto-${shortSha}`;
@@ -66,24 +79,21 @@ for (const target of targets) {
 fs.writeFileSync(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
 if (deployedItems.length > 0) {
   fs.writeFileSync(discordPayloadPath, `${JSON.stringify(deployedItems, null, 2)}\n`, 'utf8');
+} else if (fs.existsSync(discordPayloadPath)) {
+  fs.rmSync(discordPayloadPath);
 }
+
 console.log(`Deployed ${changedCount} changed game(s).`);
 
 function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }) {
   const now = new Date().toISOString().slice(0, 10);
-  const title = `${target.title}を自動更新しました`;
   const commitUrl = `https://github.com/${target.game_repo}/commit/${currentSha}`;
   const gameUrl = target.public_url || `https://${target.itch_target.replace('/', '.itch.io/')}`;
-  let summary = `ゲーム本体の新しいコミット ${shortSha} を検知し、itch.ioへ自動アップロードしました。`;
-
-  try {
-    if (previousSha) {
-      const log = run(`git -C ${shellArg(gameDir)} log --oneline ${previousSha}..${currentSha}`).trim();
-      if (log) summary = `ゲーム本体を更新しました。変更: ${log.split('\n').slice(0, 3).join(' / ')}`;
-    }
-  } catch (error) {
-    console.log(`Could not build commit summary for ${target.id}; using fallback text.`);
-  }
+  const title = `${target.title}を自動更新しました`;
+  const changes = readCommitSummary({ gameDir, previousSha, currentSha });
+  const summary = changes.length
+    ? `ゲーム本体を更新しました。変更: ${changes.slice(0, 3).join(' / ')}`
+    : `ゲーム本体の新しいコミット ${shortSha} を検知し、itch.ioへ自動アップロードしました。`;
 
   const id = `itch-auto-${target.id}-${shortSha}`;
   const item = {
@@ -99,12 +109,22 @@ function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }
     game: target.id,
     commit: commitUrl
   };
-  news.updates = [item, ...news.updates.filter((entry) => entry.id !== id)];
 
+  news.updates = [item, ...news.updates.filter((entry) => entry.id !== id)];
+  writeDevlog({ id, now, target, commitUrl, gameUrl, summary, changes });
+  return item;
+}
+
+function writeDevlog({ id, now, target, commitUrl, gameUrl, summary, changes }) {
   const devlogsDir = path.join(siteDir, 'devlogs');
   fs.mkdirSync(devlogsDir, { recursive: true });
+
+  const changeLines = changes.length
+    ? changes.map((line) => `- ${line}`)
+    : [`- ${summary}`];
+
   const devlog = [
-    `# ${title}`,
+    `# ${target.title}を更新しました`,
     '',
     `公開日: ${now}`,
     `作品: ${target.title}`,
@@ -113,16 +133,36 @@ function addNewsAndDevlog({ target, currentSha, previousSha, shortSha, gameDir }
     '',
     '## 更新内容',
     '',
-    summary,
+    ...changeLines,
     '',
     '## 公開メモ',
     '',
-    '- HPとDiscordには自動反映済み。',
-    '- itch.ioのDeveloper Logsへ投稿する場合は、この内容を確認して貼り付ける。',
+    '- GitHub更新を検知し、butlerでitch.ioへ自動アップロードしました。',
+    '- HPの更新情報とDiscord通知には自動反映済みです。',
+    '- itch.ioのDeveloper Logsへ投稿する場合は、この内容を確認して貼り付けます。',
     ''
   ].join('\n');
+
   fs.writeFileSync(path.join(devlogsDir, `${id}.md`), devlog, 'utf8');
-  return item;
+}
+
+function readCommitSummary({ gameDir, previousSha, currentSha }) {
+  if (!previousSha) return [];
+
+  try {
+    const log = run(`git -C ${shellArg(gameDir)} log --oneline ${previousSha}..${currentSha}`).trim();
+    return log ? log.split('\n').map((line) => line.trim()).filter(Boolean) : [];
+  } catch (error) {
+    console.log('Could not build commit summary; using fallback text.');
+    return [];
+  }
+}
+
+function resolveReleaseSource(gameDir) {
+  const distDir = path.join(gameDir, 'dist');
+  if (fs.existsSync(path.join(distDir, 'index.html'))) return distDir;
+  if (fs.existsSync(path.join(gameDir, 'index.html'))) return gameDir;
+  return '';
 }
 
 function isConfigured(target) {

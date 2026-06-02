@@ -57,12 +57,18 @@ jobs:
       - name: Prepare HTML5 release folder
         run: |
           mkdir -p release
-          rsync -av \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='README.md' \
-            --exclude='docs' \
-            game/ release/
+          if [ -f game/dist/index.html ]; then
+            rsync -av game/dist/ release/
+          else
+            rsync -av \
+              --exclude='.git' \
+              --exclude='.github' \
+              --exclude='README.md' \
+              --exclude='docs' \
+              --exclude='node_modules' \
+              --exclude='package-lock.json' \
+              game/ release/
+          fi
           test -f release/index.html
 
       - name: Setup butler
@@ -124,8 +130,8 @@ jobs:
             '## 公開メモ',
             '',
             `- butler channel: ${channel}`,
-            '- HPとDiscordには自動反映済み。',
-            '- itch.ioのDeveloper Logsへ投稿する場合は、この内容を確認して貼り付ける。',
+            '- HPの更新情報とDiscord通知には自動反映済みです。',
+            '- itch.ioのDeveloper Logsへ投稿する場合は、この内容を確認して貼り付けます。',
             ''
           ].join('\n');
           fs.writeFileSync(path.join('devlogs', `${idBase}.md`), devlog, 'utf8');
