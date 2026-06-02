@@ -10,6 +10,8 @@ https://sengokugekokuzyou.github.io/
 
 - YouTube: https://www.youtube.com/@戦国下剋上BEATS
 - YouTube channel ID URL: https://youtube.com/channel/UChtURL_MY58O7nfhmaYOMaw
+- Apple Music: https://music.apple.com/us/artist/sengoku-gekokujo-beats/1888867608
+- Spotify: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL
 - note: https://note.com/shirokurochannel
 - X: https://x.com/sirokuro_selbin
 - Discord: https://discord.gg/v37VSgrVHC
@@ -55,6 +57,8 @@ https://sengokugekokuzyou.github.io/
 公開物、ZIP、告知、外部リンクの更新は代表者確認後に実施します。自動化対象として明示されたYouTube新着検知、ゲーム更新検知、itch.ioアップロード、Discord通知はこのREADMEのフローに従います。
 
 広告収益化は、AdSense等の審査・広告ID発行・規約確認後に実配信コードを追加します。
+
+アクセス解析はGoogle Analytics 4を全HTMLページに導入済みです。測定IDは `G-2LGYYG5ZZS` です。取得データはページ閲覧、流入元、端末種別、外部リンク遷移などの運営判断に使います。
 
 ## 当面保留
 
