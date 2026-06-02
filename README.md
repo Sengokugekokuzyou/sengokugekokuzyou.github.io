@@ -60,6 +60,8 @@ https://sengokugekokuzyou.github.io/
 
 アクセス解析はGoogle Analytics 4を全HTMLページに導入済みです。測定IDは `G-2LGYYG5ZZS` です。取得データはページ閲覧、流入元、端末種別、外部リンク遷移などの運営判断に使います。
 
+外部リンクのクリックは `site.js` からGA4イベント `external_link_click` として送信します。主に itch.io、YouTube、Apple Music、Spotify、Discord、GitHub への送客確認に使います。
+
 ## 当面保留
 
 戦国転職血統録の棚卸しと自動化設定は当面保留です。

@@ -75,5 +75,24 @@ function escapeAttribute(value) {
   return escapeHtml(value).replaceAll('`', '&#96;');
 }
 
+function trackExternalLinks() {
+  document.querySelectorAll('a[href^="http"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (typeof gtag !== 'function') return;
+
+      const url = new URL(link.href);
+      if (url.hostname === window.location.hostname) return;
+
+      gtag('event', 'external_link_click', {
+        link_url: link.href,
+        link_domain: url.hostname,
+        link_text: link.textContent.trim().slice(0, 80),
+        transport_type: 'beacon'
+      });
+    });
+  });
+}
+
 loadUpdates();
 loadLatestYouTube();
+trackExternalLinks();
