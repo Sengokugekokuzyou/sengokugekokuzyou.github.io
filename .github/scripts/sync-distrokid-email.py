@@ -21,6 +21,11 @@ SPOTIFY_ARTIST_URL = os.getenv(
     "SPOTIFY_ARTIST_URL",
     "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
 )
+EMAIL_MATCH_TERMS = [
+    term.strip().lower()
+    for term in os.getenv("DISTROKID_EMAIL_MATCH_TERMS", "distrokid").split(",")
+    if term.strip()
+]
 
 PUBLIC_KEYWORDS = [
     "available",
@@ -151,7 +156,7 @@ def fetch_distrokid_messages(host, port, user, password, mailbox):
             parsed = email.message_from_bytes(raw)
             sender = decode_value(parsed.get("From", ""))
             subject = decode_value(parsed.get("Subject", ""))
-            if "distrokid" not in sender.lower() and "distrokid" not in subject.lower():
+            if not matches_distrokid_notice(sender, subject):
                 continue
 
             message_date = parse_date(parsed.get("Date"))
@@ -174,6 +179,11 @@ def is_public_release_notice(message):
     if any(keyword in text for keyword in BLOCK_KEYWORDS):
         return False
     return any(keyword in text for keyword in PUBLIC_KEYWORDS)
+
+
+def matches_distrokid_notice(sender, subject):
+    text = f"{sender} {subject}".lower()
+    return any(term in text for term in EMAIL_MATCH_TERMS)
 
 
 def extract_release_title(subject):

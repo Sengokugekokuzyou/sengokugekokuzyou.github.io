@@ -24,6 +24,7 @@ jobs:
           DISTROKID_IMAP_MAILBOX: ${{ vars.DISTROKID_IMAP_MAILBOX || 'INBOX' }}
           DISTROKID_EMAIL_SINCE_DAYS: ${{ vars.DISTROKID_EMAIL_SINCE_DAYS || '45' }}
           DISTROKID_EMAIL_MAX_MESSAGES: ${{ vars.DISTROKID_EMAIL_MAX_MESSAGES || '50' }}
+          DISTROKID_EMAIL_MATCH_TERMS: ${{ vars.DISTROKID_EMAIL_MATCH_TERMS || 'distrokid' }}
           APPLE_MUSIC_ARTIST_URL: ${{ vars.APPLE_MUSIC_ARTIST_URL || 'https://music.apple.com/us/artist/sengoku-gekokujo-beats/1888867608' }}
           SPOTIFY_ARTIST_URL: ${{ vars.SPOTIFY_ARTIST_URL || 'https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL' }}
         run: python .github/scripts/sync-distrokid-email.py

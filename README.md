@@ -41,9 +41,11 @@ Spotify Web APIは2026年のSpotify Developer仕様変更により、Development
 
 ### DistroKidメール更新
 
-`sync-distrokid-email.yml` がDistroKidから届くメールをIMAPで確認し、配信完了・公開・ストア反映系のメールだけを `news.json` に追加します。メール本文をそのまま公開せず、公式HP/Discord向けの定型文に変換します。
+`sync-distrokid-email.yml` がDistroKid登録アカウント宛に届くメールをIMAPで確認し、配信完了・公開・ストア反映系のメールだけを `news.json` に追加します。メール本文をそのまま公開せず、公式HP/Discord向けの定型文に変換します。
 
 エラー、修正依頼、支払い、拒否、権利確認などのメールは公開対象外です。公開通知は全自動で、見栄えと事故防止のために安全な件名パターンだけを採用します。
+
+DistroKid登録に使っているメールアカウントがGitHubや普段使いのアカウントと違う場合は、その受信メールボックスのIMAP情報を `DISTROKID_IMAP_*` Secrets に設定します。DistroKidメールの件名表記が変わる場合は、`DISTROKID_EMAIL_MATCH_TERMS` に件名や差出人に含まれる語句をカンマ区切りで設定します。
 
 ### ゲーム更新とitch.io反映
 
@@ -71,7 +73,7 @@ Spotify Web APIは2026年のSpotify Developer仕様変更により、Development
 - `BUTLER_API_KEY`
 - `DISTROKID_IMAP_HOST`
 - `DISTROKID_IMAP_PORT`
-- `DISTROKID_IMAP_USER`
+- `DISTROKID_IMAP_USER`: DistroKid登録メールを受信しているメールアカウント
 - `DISTROKID_IMAP_PASSWORD`
 
 ## Variables
@@ -87,6 +89,7 @@ Spotify Web APIは2026年のSpotify Developer仕様変更により、Development
 - `DISTROKID_IMAP_MAILBOX`
 - `DISTROKID_EMAIL_SINCE_DAYS`
 - `DISTROKID_EMAIL_MAX_MESSAGES`
+- `DISTROKID_EMAIL_MATCH_TERMS`
 
 ## 運用方針
 
