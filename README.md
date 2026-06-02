@@ -39,6 +39,12 @@ https://sengokugekokuzyou.github.io/
 
 Spotify Web APIは2026年のSpotify Developer仕様変更により、Development ModeでPremiumアカウントが必要です。Premiumを使わない間はSpotify APIでの自動検知は保留し、Apple Musicの検知結果にSpotifyアーティストページの導線を併記します。
 
+### DistroKidメール更新
+
+`sync-distrokid-email.yml` がDistroKidから届くメールをIMAPで確認し、配信完了・公開・ストア反映系のメールだけを `news.json` に追加します。メール本文をそのまま公開せず、公式HP/Discord向けの定型文に変換します。
+
+エラー、修正依頼、支払い、拒否、権利確認などのメールは公開対象外です。公開通知は全自動で、見栄えと事故防止のために安全な件名パターンだけを採用します。
+
 ### ゲーム更新とitch.io反映
 
 `auto-deploy-itch-on-game-change.yml` が `deploy-targets.json` に登録されたゲームリポジトリを確認します。変更があればbutlerでitch.ioへアップロードし、`news.json`、`devlogs/`、`.deploy-state/` を更新します。Discord通知はこのワークフロー内から直接送信します。
@@ -63,6 +69,10 @@ Spotify Web APIは2026年のSpotify Developer仕様変更により、Development
 
 - `DISCORD_WEBHOOK_URL`
 - `BUTLER_API_KEY`
+- `DISTROKID_IMAP_HOST`
+- `DISTROKID_IMAP_PORT`
+- `DISTROKID_IMAP_USER`
+- `DISTROKID_IMAP_PASSWORD`
 
 ## Variables
 
@@ -72,7 +82,11 @@ Spotify Web APIは2026年のSpotify Developer仕様変更により、Development
 - `APPLE_MUSIC_COUNTRY`
 - `APPLE_MUSIC_INITIAL_IMPORT_LIMIT`
 - `APPLE_MUSIC_UPDATE_LIMIT`
+- `APPLE_MUSIC_ARTIST_URL`
 - `SPOTIFY_ARTIST_URL`
+- `DISTROKID_IMAP_MAILBOX`
+- `DISTROKID_EMAIL_SINCE_DAYS`
+- `DISTROKID_EMAIL_MAX_MESSAGES`
 
 ## 運用方針
 

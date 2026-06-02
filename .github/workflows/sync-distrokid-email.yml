@@ -1,0 +1,41 @@
+name: Sync DistroKid email updates
+
+on:
+  schedule:
+    - cron: '10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync DistroKid emails to news.json
+        env:
+          DISTROKID_IMAP_HOST: ${{ secrets.DISTROKID_IMAP_HOST }}
+          DISTROKID_IMAP_PORT: ${{ secrets.DISTROKID_IMAP_PORT || '993' }}
+          DISTROKID_IMAP_USER: ${{ secrets.DISTROKID_IMAP_USER }}
+          DISTROKID_IMAP_PASSWORD: ${{ secrets.DISTROKID_IMAP_PASSWORD }}
+          DISTROKID_IMAP_MAILBOX: ${{ vars.DISTROKID_IMAP_MAILBOX || 'INBOX' }}
+          DISTROKID_EMAIL_SINCE_DAYS: ${{ vars.DISTROKID_EMAIL_SINCE_DAYS || '45' }}
+          DISTROKID_EMAIL_MAX_MESSAGES: ${{ vars.DISTROKID_EMAIL_MAX_MESSAGES || '50' }}
+          APPLE_MUSIC_ARTIST_URL: ${{ vars.APPLE_MUSIC_ARTIST_URL || 'https://music.apple.com/us/artist/sengoku-gekokujo-beats/1888867608' }}
+          SPOTIFY_ARTIST_URL: ${{ vars.SPOTIFY_ARTIST_URL || 'https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL' }}
+        run: python .github/scripts/sync-distrokid-email.py
+
+      - name: Commit DistroKid email updates
+        run: |
+          if git diff --quiet -- news.json .music-release-state/distrokid-email.json; then
+            echo "No DistroKid email changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add news.json .music-release-state/distrokid-email.json
+          git commit -m "Sync DistroKid email updates"
+          git push
