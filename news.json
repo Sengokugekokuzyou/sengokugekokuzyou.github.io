@@ -1,6 +1,28 @@
 {
   "updates": [
     {
+      "id": "youtube-GzOXHXW5K44",
+      "date": "2026-06-03",
+      "category": "YouTube",
+      "title": "YouTube更新: 【影に生きる覚悟】孤独の右腕 / 片倉小十郎 | 戦国HIPHOP",
+      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
+      "url": "https://www.youtube.com/watch?v=GzOXHXW5K44",
+      "approved": true,
+      "discord": true,
+      "source": "youtube"
+    },
+    {
+      "id": "youtube-pRb4Krxt9v8",
+      "date": "2026-06-03",
+      "category": "YouTube",
+      "title": "YouTube更新: 【自作音ゲー】自作の戦国HIPHOPで音ゲー作ってみたら最高にノれる神ゲーできたww ｜ 戦国下剋上BEATS #Shorts #音ゲー #戦国",
+      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
+      "url": "https://www.youtube.com/watch?v=pRb4Krxt9v8",
+      "approved": true,
+      "discord": true,
+      "source": "youtube"
+    },
+    {
       "id": "itch-auto-sengoku-blood-71eadcf",
       "date": "2026-06-03",
       "category": "itch.io自動更新",
