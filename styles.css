@@ -172,6 +172,29 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
 .card a, .panel a:not(.button), .update-item a, .work-panel a:not(.button), .link-card a { color: var(--gold); font-weight: 900; }
 .update-date { margin: 0; color: var(--gold); font-size: 13px; font-weight: 900; }
 
+.ad-slot {
+  margin: clamp(28px, 5vw, 48px) auto 0;
+  max-width: 980px;
+  min-height: 120px;
+  padding: 14px;
+  border: 1px solid rgba(248, 241, 232, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.16);
+}
+.ad-slot-section {
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 36px) clamp(20px, 6vw, 88px);
+  max-width: none;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+.ad-slot p {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
 .status { display: inline-flex; padding: 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 900; }
 .status.live { color: #fff; background: var(--red); }
 .status.dev { color: #1a100d; background: var(--gold); }
