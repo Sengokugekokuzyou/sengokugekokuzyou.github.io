@@ -1,6 +1,19 @@
 {
   "updates": [
     {
+      "id": "itch-auto-sengoku-blood-71eadcf",
+      "date": "2026-06-03",
+      "category": "itch.io自動更新",
+      "title": "血華の系譜を自動更新しました",
+      "body": "ゲーム本体の新しいコミット 71eadcf を検知し、itch.ioへ自動アップロードしました。",
+      "url": "https://sengokugekokujobeats.itch.io/kekkanokeifu",
+      "approved": true,
+      "discord": true,
+      "source": "itch-auto",
+      "game": "sengoku-blood",
+      "commit": "https://github.com/Sengokugekokuzyou/sengoku-blood-/commit/71eadcf9d84c673554d640fc209817b614506fc1"
+    },
+    {
       "id": "youtube-si2w_3kS4OU",
       "date": "2026-06-02",
       "category": "YouTube",
