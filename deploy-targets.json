@@ -1,8 +1,12 @@
 {
+  "policy": {
+    "itch_auto_upload": false,
+    "note": "itch.ioへの自動アップロードは停止。更新物は更新出力/最新フォルダとC:\\Users\\kurai\\Documents\\外出先用へ出力し、外出先用フォルダには開発ログ用アップデート情報も同梱する。"
+  },
   "targets": [
     {
       "id": "sengoku-blood",
-      "enabled": true,
+      "enabled": false,
       "title": "血華の系譜",
       "game_repo": "Sengokugekokuzyou/sengoku-blood-",
       "itch_target": "sengokugekokujobeats/kekkanokeifu",
@@ -12,7 +16,7 @@
     },
     {
       "id": "samurai-cypher",
-      "enabled": true,
+      "enabled": false,
       "title": "戦国下剋上BEATS - SAMURAI CYPHER -",
       "game_repo": "Sengokugekokuzyou/samurai-cypher",
       "itch_target": "sengokugekokujobeats/beats-samurai-cypher",
@@ -22,8 +26,8 @@
     },
     {
       "id": "samurai-breed",
-      "enabled": true,
-      "title": "サムライブリード - 契りノ血脈 -",
+      "enabled": false,
+      "title": "サムライブリード - 契りの血脈 -",
       "game_repo": "Sengokugekokuzyou/samurai-breed",
       "itch_target": "sengokugekokujobeats/samurai-breed",
       "itch_channel": "html5",
