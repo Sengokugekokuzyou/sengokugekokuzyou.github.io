@@ -180,8 +180,35 @@
 
 ## 入力後の流れ
 
+1. 自動生成された `週次マーケティングサマリー_auto_YYYY-MM-DD.md` を開く
+2. 手入力が必要なGA4実数、Search Console、AdSense収益、itch.io閲覧/DL、YouTube Studio詳細を追記する
+3. `週次マーケティングサマリー_YYYY-MM-DD.md` として保存する
+4. Discord投稿用ブロックを整える
+5. 実装変更が必要なものだけCodexに依頼する
+6. 同じファイルを `更新出力/マーケティング/` と `C:\Users\kurai\Documents\外出先用\マーケティング` の両方に残す
+
+## 自動取得できるもの
+
+- `news.json` に入ったYouTube更新
+- `news.json` に入ったApple Music更新
+- `news.json` に入ったDistroKid更新
+- 公開HPのページステータス
+- GA4タグの有無
+- AdSenseタグの有無
+- `ads.txt` の公開状態
+- `sitemap.xml` の公開状態
+
+## 手入力が必要なもの
+
+- GA4の表示回数、ユーザー数、外部リンククリック実数
+- Search Consoleの検索語句、クリック数、表示回数
+- AdSenseの審査状態、収益、広告配信詳細
+- itch.ioの閲覧数、ダウンロード数、参照元
+- YouTube Studioの視聴回数、流入元、CTR、平均視聴時間
+
+## 手動で新規作成する場合
+
 1. `週次マーケティングサマリー_YYYY-MM-DD.md` に数字を入れる
 2. Discord投稿用ブロックを整える
 3. 実装変更が必要なものだけCodexに依頼する
 4. 同じファイルを `更新出力/マーケティング/` と `C:\Users\kurai\Documents\外出先用\マーケティング` の両方に残す
-
