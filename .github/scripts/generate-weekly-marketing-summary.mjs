@@ -224,9 +224,9 @@ async function checkPublicText(pagePath, expected) {
 }
 
 async function getGoogleAccessToken() {
-  const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
-  const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
-  const refreshToken = process.env.GOOGLE_OAUTH_REFRESH_TOKEN;
+  const clientId = cleanSecret(process.env.GOOGLE_OAUTH_CLIENT_ID);
+  const clientSecret = cleanSecret(process.env.GOOGLE_OAUTH_CLIENT_SECRET);
+  const refreshToken = cleanSecret(process.env.GOOGLE_OAUTH_REFRESH_TOKEN);
   if (!clientId || !clientSecret || !refreshToken) return null;
 
   const body = new URLSearchParams({
@@ -248,7 +248,7 @@ async function getGoogleAccessToken() {
 }
 
 async function fetchGa4Summary(accessToken, start, end) {
-  const propertyId = process.env.GA4_PROPERTY_ID || '539915731';
+  const propertyId = cleanSecret(process.env.GA4_PROPERTY_ID) || '539915731';
   const body = {
     dateRanges: [{ startDate: formatDate(start), endDate: formatDate(end) }],
     dimensions: [{ name: 'pagePath' }],
@@ -292,7 +292,7 @@ async function fetchGa4Summary(accessToken, start, end) {
 }
 
 async function fetchSearchConsoleSummary(accessToken, start, end) {
-  const searchSite = process.env.SEARCH_CONSOLE_SITE_URL || `${siteUrl}/`;
+  const searchSite = cleanSecret(process.env.SEARCH_CONSOLE_SITE_URL) || `${siteUrl}/`;
   const body = {
     startDate: formatDate(start),
     endDate: formatDate(end),
@@ -414,6 +414,15 @@ function googleHeaders(accessToken) {
     authorization: `Bearer ${accessToken}`,
     'content-type': 'application/json'
   };
+}
+
+function cleanSecret(value) {
+  if (!value) return '';
+  let next = String(value).trim();
+  if ((next.startsWith('"') && next.endsWith('"')) || (next.startsWith("'") && next.endsWith("'"))) {
+    next = next.slice(1, -1).trim();
+  }
+  return next;
 }
 
 async function readJson(filePath, fallback) {
