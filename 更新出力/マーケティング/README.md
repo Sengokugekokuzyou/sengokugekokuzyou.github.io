@@ -7,7 +7,6 @@
 ## 使い方
 
 1. `templates/weekly-marketing-summary.md` を元に週次ファイルを作る
-2. GA4、Search Console、AdSense、itch.io、YouTube Studio、Discordの数字を記入する
+2. `docs/weekly-summary-input-guide.md` を見ながら、GA4、Search Console、AdSense、itch.io、YouTube Studio、Discordの数字を記入する
 3. Discord投稿用ブロックを確認する
 4. 次アクションだけCodex作業に回す
-
