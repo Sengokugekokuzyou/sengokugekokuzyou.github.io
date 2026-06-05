@@ -1,0 +1,5 @@
+# Local Google OAuth / API credentials
+client_secret_*.json
+google-oauth-token.local.json
+*.local.json
+
