@@ -71,10 +71,10 @@ a:hover { text-decoration: underline; }
 .nav a:hover { color: var(--gold); }
 
 .hero {
-  min-height: 78vh;
+  min-height: 68vh;
   display: grid;
   align-items: center;
-  padding: clamp(64px, 9vw, 118px) clamp(20px, 6vw, 88px);
+  padding: clamp(54px, 7vw, 92px) clamp(20px, 6vw, 88px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -84,6 +84,7 @@ a:hover { text-decoration: underline; }
   gap: clamp(28px, 6vw, 72px);
   align-items: center;
   width: min(1180px, 100%);
+  margin: 0 auto;
 }
 
 .hero-copy { max-width: 850px; }
@@ -194,6 +195,41 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
   border-radius: 8px;
 }
 .card-image { margin-bottom: 18px; }
+.card-emblem {
+  display: grid;
+  place-items: end start;
+  min-height: 118px;
+  margin: -4px -4px 18px;
+  padding: 16px;
+  border: 1px solid rgba(232, 185, 91, 0.26);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(216, 58, 49, 0.45), transparent 30%),
+    linear-gradient(135deg, rgba(232, 185, 91, 0.18), rgba(255, 255, 255, 0.035));
+}
+.card-emblem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+  background-image:
+    linear-gradient(135deg, transparent 0 42%, rgba(232, 185, 91, 0.22) 42% 44%, transparent 44%),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px;
+}
+.card-emblem span {
+  position: relative;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+}
+.card-emblem.cypher { background-color: rgba(127, 23, 23, 0.42); }
+.card-emblem.breed { background-color: rgba(61, 24, 18, 0.48); }
+.card-emblem.archive { background-color: rgba(232, 185, 91, 0.12); }
 .work-image {
   border-color: rgba(232, 185, 91, 0.42);
   border-radius: 10px;
@@ -207,12 +243,23 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
 
 .ad-slot {
   margin: clamp(28px, 5vw, 48px) auto 0;
-  max-width: 980px;
-  min-height: 120px;
+  max-width: 760px;
+  min-height: 104px;
   padding: 14px;
   border: 1px solid rgba(248, 241, 232, 0.1);
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.16);
+}
+.ad-slot .adsbygoogle {
+  display: block;
+  min-height: 90px;
+  max-height: 120px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.ad-slot:has(.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
 }
 .ad-slot-section {
   margin: 0 auto;
