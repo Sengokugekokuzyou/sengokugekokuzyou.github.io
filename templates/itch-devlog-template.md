@@ -43,6 +43,7 @@ Main changes:
 Files:
 
 - Version: vX.X
+- Release Type: 本リリース / アップデート / テスト公開
 - Channel: HTML5
 - Game: <Game title>
 - Public URL: <itch.io URL>
