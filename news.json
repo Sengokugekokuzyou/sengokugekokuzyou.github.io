@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-1894311186",
+      "date": "2026-06-05",
+      "category": "音楽配信",
+      "title": "配信リリース: 孤独に染まる天下 (Kodoku Ni Somaru Tenka) - Loneliness of the Demon / Oda Nobunaga - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E5%AD%A4%E7%8B%AC%E3%81%AB%E6%9F%93%E3%81%BE%E3%82%8B%E5%A4%A9%E4%B8%8B-kodoku-ni-somaru-tenka-loneliness-of-the/1894311186?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "1894311186",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6a/b3/3f/6ab33f77-d6e7-545a-b3b7-f04721b3b9c3/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "youtube-zeMLGFfi72E",
       "date": "2026-06-04",
       "category": "YouTube",
