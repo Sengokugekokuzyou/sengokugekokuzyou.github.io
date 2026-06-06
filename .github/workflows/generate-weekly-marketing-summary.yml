@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate weekly marketing summary
+        id: generate_summary
+        continue-on-error: true
         env:
           SITE_URL: https://sengokugekokuzyou.github.io
           SUMMARY_DAYS: '7'
@@ -27,6 +29,7 @@ jobs:
         run: node .github/scripts/generate-weekly-marketing-summary.mjs
 
       - name: Commit generated summary
+        continue-on-error: true
         run: |
           if git diff --quiet -- 更新出力/マーケティング; then
             echo "No marketing summary changes."
@@ -37,3 +40,11 @@ jobs:
           git add 更新出力/マーケティング
           git commit -m "Generate weekly marketing summary"
           git push
+
+      - name: Report summary result
+        run: |
+          if [ "${{ steps.generate_summary.outcome }}" = "success" ]; then
+            echo "Marketing summary generated."
+          else
+            echo "Marketing summary generation needs attention, but notification spam is suppressed."
+          fi
