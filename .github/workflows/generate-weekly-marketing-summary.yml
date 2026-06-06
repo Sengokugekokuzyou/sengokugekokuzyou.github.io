@@ -37,4 +37,3 @@ jobs:
           git add 更新出力/マーケティング
           git commit -m "Generate weekly marketing summary"
           git push
-

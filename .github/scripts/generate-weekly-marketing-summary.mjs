@@ -30,11 +30,13 @@ const pageChecks = await Promise.all([
 const adsTxt = await checkPublicText('/ads.txt', 'pub-1454558538565957');
 const sitemap = await checkPublicText('/sitemap.xml', 'support.html');
 
-const accessToken = await getGoogleAccessToken();
-const ga4 = accessToken ? await fetchGa4Summary(accessToken, startDate, endDate) : skipped('Google OAuth secrets are not configured.');
-const searchConsole = accessToken ? await fetchSearchConsoleSummary(accessToken, startDate, endDate) : skipped('Google OAuth secrets are not configured.');
-const youtubeAnalytics = accessToken ? await fetchYouTubeAnalyticsSummary(accessToken, startDate, endDate) : skipped('Google OAuth secrets are not configured.');
-const adsense = accessToken ? await fetchAdsenseSummary(accessToken, startDate, endDate) : skipped('Google OAuth secrets are not configured.');
+const googleTokenResult = await getGoogleAccessToken();
+const accessToken = googleTokenResult.accessToken;
+const googleSkipReason = googleTokenResult.message || 'Google OAuth secrets are not configured.';
+const ga4 = accessToken ? await fetchGa4Summary(accessToken, startDate, endDate) : skipped(googleSkipReason);
+const searchConsole = accessToken ? await fetchSearchConsoleSummary(accessToken, startDate, endDate) : skipped(googleSkipReason);
+const youtubeAnalytics = accessToken ? await fetchYouTubeAnalyticsSummary(accessToken, startDate, endDate) : skipped(googleSkipReason);
+const adsense = accessToken ? await fetchAdsenseSummary(accessToken, startDate, endDate) : skipped(googleSkipReason);
 
 const markdown = buildMarkdown({
   period,
@@ -227,7 +229,9 @@ async function getGoogleAccessToken() {
   const clientId = cleanSecret(process.env.GOOGLE_OAUTH_CLIENT_ID);
   const clientSecret = cleanSecret(process.env.GOOGLE_OAUTH_CLIENT_SECRET);
   const refreshToken = cleanSecret(process.env.GOOGLE_OAUTH_REFRESH_TOKEN);
-  if (!clientId || !clientSecret || !refreshToken) return null;
+  if (!clientId || !clientSecret || !refreshToken) {
+    return { accessToken: null, message: 'Google OAuth secrets are not configured.' };
+  }
 
   const body = new URLSearchParams({
     client_id: clientId,
@@ -242,9 +246,12 @@ async function getGoogleAccessToken() {
   });
   const json = await response.json();
   if (!response.ok) {
-    throw new Error(`Google token refresh failed: ${json.error || response.status}`);
+    return {
+      accessToken: null,
+      message: `Google token refresh failed: ${json.error || response.status}`
+    };
   }
-  return json.access_token;
+  return { accessToken: json.access_token, message: '' };
 }
 
 async function fetchGa4Summary(accessToken, start, end) {
