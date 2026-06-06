@@ -103,12 +103,20 @@ h2 { margin: 0; font-size: clamp(30px, 4.5vw, 58px); letter-spacing: 0; }
 h3 { margin: 12px 0 10px; font-size: 22px; }
 
 .lead { max-width: 690px; margin: 24px 0 0; color: var(--muted); font-size: clamp(17px, 2.2vw, 22px); line-height: 1.8; }
+.english-lead {
+  max-width: 650px;
+  margin: 14px 0 0;
+  color: rgba(248, 241, 232, 0.82);
+  font-size: clamp(15px, 1.55vw, 18px);
+  line-height: 1.72;
+}
 .small-lead { max-width: 760px; font-size: clamp(16px, 1.8vw, 20px); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
 .compact-actions { margin-top: 24px; }
 
 .button {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 48px;
@@ -119,6 +127,14 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
   color: var(--ink);
   font-weight: 800;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
+}
+.button span {
+  margin-top: 2px;
+  color: rgba(248, 241, 232, 0.74);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .button.primary { border-color: rgba(216, 58, 49, 0.8); background: linear-gradient(135deg, var(--red), var(--red-dark)); color: #fff; }
 
@@ -258,6 +274,12 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
 }
 .featured-card { border-color: rgba(216, 58, 49, 0.42); background: linear-gradient(180deg, rgba(216, 58, 49, 0.18), rgba(255, 255, 255, 0.035)); }
 .card p, .panel p, .update-item p, .work-panel p, .link-card p { color: var(--muted); line-height: 1.78; }
+.english-copy {
+  margin-top: -2px;
+  color: rgba(248, 241, 232, 0.74) !important;
+  font-size: 14px;
+  line-height: 1.65 !important;
+}
 .card a, .panel a:not(.button), .update-item a, .work-panel a:not(.button), .link-card a { color: var(--gold); font-weight: 900; }
 .update-date { margin: 0; color: var(--gold); font-size: 13px; font-weight: 900; }
 
