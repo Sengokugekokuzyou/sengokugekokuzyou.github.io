@@ -25,6 +25,12 @@ https://sengokugekokuzyou.github.io/
 - SAMURAI CYPHER: `samurai-cypher.html`
 - サムライブリード - 契りノ血脈 -: `samurai-breed.html`
 
+## note記事方針
+
+note記事は読者の共感を最優先にします。制作ログやエラー記録をそのまま出すのではなく、迷い、判断、手触り、次に見たい景色が伝わる文章にします。
+
+スマホで読みやすいよう、行間を広めに取り、短い段落で構成します。詳細は `docs/note-writing-policy.md` を参照します。
+
 ## 自動化フロー
 
 ### YouTube更新

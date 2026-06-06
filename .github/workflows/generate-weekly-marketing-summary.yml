@@ -48,3 +48,10 @@ jobs:
           else
             echo "Marketing summary generation needs attention, but notification spam is suppressed."
           fi
+
+      - name: Post marketing summary to Discord
+        if: steps.generate_summary.outcome == 'success'
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: node .github/scripts/post-marketing-summary-to-discord.mjs

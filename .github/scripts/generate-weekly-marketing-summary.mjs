@@ -7,6 +7,7 @@ const days = Number.parseInt(process.env.SUMMARY_DAYS || '7', 10);
 const awayDir = process.env.MARKETING_AWAY_DIR || '';
 const outputDir = path.join('更新出力', 'マーケティング');
 const outputPath = path.join(outputDir, `週次マーケティングサマリー_auto_${summaryDate}.md`);
+const latestOutputPath = path.join(outputDir, '週次マーケティングサマリー_latest.md');
 
 const endDate = parseDate(summaryDate);
 const startDate = addDays(endDate, -(Number.isFinite(days) ? days - 1 : 6));
@@ -57,14 +58,18 @@ const markdown = buildMarkdown({
 
 await fs.mkdir(outputDir, { recursive: true });
 await fs.writeFile(outputPath, markdown, 'utf8');
+await fs.writeFile(latestOutputPath, markdown, 'utf8');
 
 if (awayDir) {
   await fs.mkdir(awayDir, { recursive: true });
   await fs.writeFile(path.join(awayDir, path.basename(outputPath)), markdown, 'utf8');
+  await fs.writeFile(path.join(awayDir, path.basename(latestOutputPath)), markdown, 'utf8');
 }
 
 console.log(`Wrote ${outputPath}`);
+console.log(`Wrote ${latestOutputPath}`);
 if (awayDir) console.log(`Copied ${path.join(awayDir, path.basename(outputPath))}`);
+if (awayDir) console.log(`Copied ${path.join(awayDir, path.basename(latestOutputPath))}`);
 
 function buildMarkdown(data) {
   const publicOkCount = data.pageChecks.filter((page) => page.publicStatus === 200).length;
