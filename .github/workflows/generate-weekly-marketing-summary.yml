@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   generate:
@@ -28,19 +28,6 @@ jobs:
           SEARCH_CONSOLE_SITE_URL: ${{ secrets.SEARCH_CONSOLE_SITE_URL }}
         run: node .github/scripts/generate-weekly-marketing-summary.mjs
 
-      - name: Commit generated summary
-        continue-on-error: true
-        run: |
-          if git diff --quiet -- 更新出力/マーケティング; then
-            echo "No marketing summary changes."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add 更新出力/マーケティング
-          git commit -m "Generate weekly marketing summary"
-          git push
-
       - name: Report summary result
         run: |
           if [ "${{ steps.generate_summary.outcome }}" = "success" ]; then
@@ -53,5 +40,5 @@ jobs:
         if: steps.generate_summary.outcome == 'success'
         continue-on-error: true
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          MARKETING_SUMMARY_DISCORD_WEBHOOK_URL: ${{ secrets.MARKETING_SUMMARY_DISCORD_WEBHOOK_URL }}
         run: node .github/scripts/post-marketing-summary-to-discord.mjs

@@ -3,3 +3,6 @@ client_secret_*.json
 google-oauth-token.local.json
 *.local.json
 
+# Internal marketing summaries should stay private.
+更新出力/マーケティング/週次マーケティングサマリー*.md
+

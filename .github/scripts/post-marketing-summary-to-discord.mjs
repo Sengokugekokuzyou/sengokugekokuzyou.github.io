@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+const webhookUrl = process.env.MARKETING_SUMMARY_DISCORD_WEBHOOK_URL;
 if (!webhookUrl) {
-  console.log('DISCORD_WEBHOOK_URL is not set. Skipping Discord summary notification.');
+  console.log('MARKETING_SUMMARY_DISCORD_WEBHOOK_URL is not set. Skipping private marketing summary notification.');
   process.exit(0);
 }
 
@@ -18,7 +18,7 @@ if (!latest) {
 const markdown = await fs.readFile(latest, 'utf8');
 const summary = extractDiscordSummary(markdown);
 const payload = {
-  username: '週次マーケティングサマリー',
+  username: '専用運営サマリー',
   content: summary
 };
 
@@ -56,8 +56,8 @@ function extractDiscordSummary(markdown) {
   const text = block ? block[1].trim() : markdown.split('\n').slice(0, 24).join('\n').trim();
   const clipped = text.length > 1600 ? `${text.slice(0, 1580)}\n...` : text;
   return [
-    '【週次マーケティングサマリー】',
-    'HP / ゲーム / YouTube / 音楽配信 / 広告の週次確認を更新しました。',
+    '【専用運営サマリー】',
+    'HP / ゲーム / YouTube / 音楽配信 / 広告の内部確認です。公開更新情報には出さない内容です。',
     '',
     clipped,
     '',
