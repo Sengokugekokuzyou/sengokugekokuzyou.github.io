@@ -1,28 +1,6 @@
 {
   "updates": [
     {
-      "id": "youtube-kz6-FXEC9RE",
-      "date": "2026-05-22",
-      "category": "YouTube",
-      "title": "YouTube更新: 伊達成実は本当に瀬戸川で孤軍奮闘の忠臣だったのか？｜人取橋の戦い 伊達成実 vs 白河義親＆二階堂勢の覚悟と真相 戦国HIPHOP",
-      "body": "@戦国下剋上BEATS のYouTubeに新しい動画を公開しました。",
-      "url": "https://www.youtube.com/watch?v=kz6-FXEC9RE",
-      "approved": true,
-      "discord": true,
-      "discordPostedAt": "2026-06-11T12:33:14.049Z"
-    },
-    {
-      "id": "youtube-gt5e1zsPI8M",
-      "date": "2026-05-21",
-      "category": "YouTube",
-      "title": "YouTube更新: 【戦国武士が言葉でフリースタイル】歌合・連歌が現代ラップの原型だった件 戦国HIPHOP",
-      "body": "@戦国下剋上BEATS のYouTubeに新しい動画を公開しました。",
-      "url": "https://www.youtube.com/watch?v=gt5e1zsPI8M",
-      "approved": true,
-      "discord": true,
-      "discordPostedAt": "2026-06-11T12:33:14.049Z"
-    },
-    {
       "id": "youtube-vu_0gTTEPms",
       "date": "2026-06-11",
       "category": "YouTube",
@@ -98,23 +76,23 @@
       "source": "youtube"
     },
     {
-      "id": "youtube-GzOXHXW5K44",
-      "date": "2026-06-03",
-      "category": "YouTube",
-      "title": "YouTube更新: 【影に生きる覚悟】孤独の右腕 / 片倉小十郎 | 戦国HIPHOP",
-      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
-      "url": "https://www.youtube.com/watch?v=GzOXHXW5K44",
-      "approved": true,
-      "discord": true,
-      "source": "youtube"
-    },
-    {
       "id": "youtube-pRb4Krxt9v8",
       "date": "2026-06-03",
       "category": "YouTube",
       "title": "YouTube更新: 【自作音ゲー】自作の戦国HIPHOPで音ゲー作ってみたら最高にノれる神ゲーできたww ｜ 戦国下剋上BEATS #Shorts #音ゲー #戦国",
       "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
       "url": "https://www.youtube.com/watch?v=pRb4Krxt9v8",
+      "approved": true,
+      "discord": true,
+      "source": "youtube"
+    },
+    {
+      "id": "youtube-GzOXHXW5K44",
+      "date": "2026-06-03",
+      "category": "YouTube",
+      "title": "YouTube更新: 【影に生きる覚悟】孤独の右腕 / 片倉小十郎 | 戦国HIPHOP",
+      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
+      "url": "https://www.youtube.com/watch?v=GzOXHXW5K44",
       "approved": true,
       "discord": true,
       "source": "youtube"
@@ -144,32 +122,15 @@
       "source": "youtube"
     },
     {
-      "id": "apple-music-1893806596",
-      "date": "2026-05-29",
-      "category": "Apple Music",
-      "title": "Apple Music配信: 友誼の果て 魂の共闘 (Yuugi No Hate Tamashii No Kyoutou) - Eternal Bond of the West / Ishida Mitsunari & Otani Yoshitsugu - Single",
-      "body": "Apple Musicで配信リリースを確認しました。",
-      "url": "https://music.apple.com/jp/album/%E5%8F%8B%E8%AA%BC%E3%81%AE%E6%9E%9C%E3%81%A6-%E9%AD%82%E3%81%AE%E5%85%B1%E9%97%98-yuugi-no-hate-tamashii-no-kyoutou-eternal/1893806596?uo=4",
-      "approved": true,
-      "discord": true,
-      "source": "apple-music",
-      "artist": "Sengoku Gekokujo BEATS",
-      "releaseId": "1893806596",
-      "releaseType": "Album",
-      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bc/d9/04/bcd9041f-847f-d0bb-1be2-a1462859f673/artwork.jpg/100x100bb.jpg"
-    },
-    {
-      "id": "itch-auto-samurai-breed-0f05311",
+      "id": "youtube-QZT5-TXeS-E",
       "date": "2026-06-01",
-      "category": "itch.io自動更新",
-      "title": "サムライブリード - 契りノ血脈 -を自動更新しました",
-      "body": "ゲーム本体の新しいコミット 0f05311 を検知し、itch.ioへ自動アップロードしました。",
-      "url": "https://sengokugekokujobeats.itch.io/samurai-breed",
+      "category": "YouTube",
+      "title": "YouTube更新: 【生か死か】片倉小十郎vs佐瀬種常 - 摺上原の決戦 / 独眼竜の刃と不退転の盾｜戦国HIPHOP",
+      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
+      "url": "https://www.youtube.com/watch?v=QZT5-TXeS-E",
       "approved": true,
       "discord": true,
-      "source": "itch-auto",
-      "game": "samurai-breed",
-      "commit": "https://github.com/Sengokugekokuzyou/samurai-breed/commit/0f05311d5f3b5b57b83fa82f45597307cf3d0aa9"
+      "source": "youtube"
     },
     {
       "id": "itch-auto-samurai-cypher-510f1a7",
@@ -185,15 +146,67 @@
       "commit": "https://github.com/Sengokugekokuzyou/samurai-cypher/commit/510f1a781b8f8cdc29d8167a9a9906e8ed4b5cfb"
     },
     {
-      "id": "youtube-QZT5-TXeS-E",
+      "id": "itch-auto-samurai-breed-0f05311",
       "date": "2026-06-01",
-      "category": "YouTube",
-      "title": "YouTube更新: 【生か死か】片倉小十郎vs佐瀬種常 - 摺上原の決戦 / 独眼竜の刃と不退転の盾｜戦国HIPHOP",
-      "body": "新しい動画を公開しました。チャンネル: @戦国下剋上BEATS",
-      "url": "https://www.youtube.com/watch?v=QZT5-TXeS-E",
+      "category": "itch.io自動更新",
+      "title": "サムライブリード - 契りノ血脈 -を自動更新しました",
+      "body": "ゲーム本体の新しいコミット 0f05311 を検知し、itch.ioへ自動アップロードしました。",
+      "url": "https://sengokugekokujobeats.itch.io/samurai-breed",
       "approved": true,
       "discord": true,
-      "source": "youtube"
+      "source": "itch-auto",
+      "game": "samurai-breed",
+      "commit": "https://github.com/Sengokugekokuzyou/samurai-breed/commit/0f05311d5f3b5b57b83fa82f45597307cf3d0aa9"
+    },
+    {
+      "id": "2026-06-01-official-site-open",
+      "date": "2026-06-01",
+      "category": "公式HP",
+      "title": "戦国下剋上BEATS公式HPを公開しました",
+      "body": "作品情報、公式Discord、広告収益化準備の情報をまとめる公式HPを公開しました。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
+      "id": "2026-06-01-discord-test-0110",
+      "date": "2026-06-01",
+      "category": "Discord接続テスト",
+      "title": "Discord自動投稿の再テストです",
+      "body": "ワークフローのエラーを修正しました。この投稿が表示されれば接続成功です。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
+      "id": "2026-06-01-discord-test-0106",
+      "date": "2026-06-01",
+      "category": "Discord接続テスト",
+      "title": "Discord自動投稿の接続テストです",
+      "body": "この投稿が更新情報チャンネルに表示されれば、公式HPからDiscordへの自動発信が成功しています。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
+      "id": "2026-06-01-discord-channel-test-0115",
+      "date": "2026-06-01",
+      "category": "Discord接続テスト",
+      "title": "更新情報チャンネルへの自動投稿テストです",
+      "body": "Webhookの投稿先を更新情報チャンネルへ差し替えた後の確認投稿です。ここに表示されれば完成です。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
+    },
+    {
+      "id": "2026-06-01-automation-ready",
+      "date": "2026-06-01",
+      "category": "運用自動化",
+      "title": "更新情報の自動発信設定が完了しました",
+      "body": "公式HP、Discord、YouTube新着検知をつなぐ更新情報の自動反映フローを設定しました。",
+      "url": "https://sengokugekokuzyou.github.io/",
+      "approved": true,
+      "discord": true
     },
     {
       "id": "youtube-ef2oIoyg_AU",
@@ -205,6 +218,21 @@
       "approved": true,
       "discord": true,
       "source": "youtube"
+    },
+    {
+      "id": "apple-music-1893806596",
+      "date": "2026-05-29",
+      "category": "Apple Music",
+      "title": "Apple Music配信: 友誼の果て 魂の共闘 (Yuugi No Hate Tamashii No Kyoutou) - Eternal Bond of the West / Ishida Mitsunari & Otani Yoshitsugu - Single",
+      "body": "Apple Musicで配信リリースを確認しました。",
+      "url": "https://music.apple.com/jp/album/%E5%8F%8B%E8%AA%BC%E3%81%AE%E6%9E%9C%E3%81%A6-%E9%AD%82%E3%81%AE%E5%85%B1%E9%97%98-yuugi-no-hate-tamashii-no-kyoutou-eternal/1893806596?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "1893806596",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/bc/d9/04/bcd9041f-847f-d0bb-1be2-a1462859f673/artwork.jpg/100x100bb.jpg"
     },
     {
       "id": "youtube-sl4eW7pe0U0",
@@ -251,54 +279,26 @@
       "source": "youtube"
     },
     {
-      "id": "2026-06-01-discord-channel-test-0115",
-      "date": "2026-06-01",
-      "category": "Discord接続テスト",
-      "title": "更新情報チャンネルへの自動投稿テストです",
-      "body": "Webhookの投稿先を更新情報チャンネルへ差し替えた後の確認投稿です。ここに表示されれば完成です。",
-      "url": "https://sengokugekokuzyou.github.io/",
+      "id": "youtube-kz6-FXEC9RE",
+      "date": "2026-05-22",
+      "category": "YouTube",
+      "title": "YouTube更新: 伊達成実は本当に瀬戸川で孤軍奮闘の忠臣だったのか？｜人取橋の戦い 伊達成実 vs 白河義親＆二階堂勢の覚悟と真相 戦国HIPHOP",
+      "body": "@戦国下剋上BEATS のYouTubeに新しい動画を公開しました。",
+      "url": "https://www.youtube.com/watch?v=kz6-FXEC9RE",
       "approved": true,
-      "discord": true
+      "discord": true,
+      "discordPostedAt": "2026-06-11T12:33:14.049Z"
     },
     {
-      "id": "2026-06-01-discord-test-0110",
-      "date": "2026-06-01",
-      "category": "Discord接続テスト",
-      "title": "Discord自動投稿の再テストです",
-      "body": "ワークフローのエラーを修正しました。この投稿が表示されれば接続成功です。",
-      "url": "https://sengokugekokuzyou.github.io/",
+      "id": "youtube-gt5e1zsPI8M",
+      "date": "2026-05-21",
+      "category": "YouTube",
+      "title": "YouTube更新: 【戦国武士が言葉でフリースタイル】歌合・連歌が現代ラップの原型だった件 戦国HIPHOP",
+      "body": "@戦国下剋上BEATS のYouTubeに新しい動画を公開しました。",
+      "url": "https://www.youtube.com/watch?v=gt5e1zsPI8M",
       "approved": true,
-      "discord": true
-    },
-    {
-      "id": "2026-06-01-discord-test-0106",
-      "date": "2026-06-01",
-      "category": "Discord接続テスト",
-      "title": "Discord自動投稿の接続テストです",
-      "body": "この投稿が更新情報チャンネルに表示されれば、公式HPからDiscordへの自動発信が成功しています。",
-      "url": "https://sengokugekokuzyou.github.io/",
-      "approved": true,
-      "discord": true
-    },
-    {
-      "id": "2026-06-01-automation-ready",
-      "date": "2026-06-01",
-      "category": "運用自動化",
-      "title": "更新情報の自動発信設定が完了しました",
-      "body": "公式HP、Discord、YouTube新着検知をつなぐ更新情報の自動反映フローを設定しました。",
-      "url": "https://sengokugekokuzyou.github.io/",
-      "approved": true,
-      "discord": true
-    },
-    {
-      "id": "2026-06-01-official-site-open",
-      "date": "2026-06-01",
-      "category": "公式HP",
-      "title": "戦国下剋上BEATS公式HPを公開しました",
-      "body": "作品情報、公式Discord、広告収益化準備の情報をまとめる公式HPを公開しました。",
-      "url": "https://sengokugekokuzyou.github.io/",
-      "approved": true,
-      "discord": true
+      "discord": true,
+      "discordPostedAt": "2026-06-11T12:33:14.049Z"
     }
   ]
 }
