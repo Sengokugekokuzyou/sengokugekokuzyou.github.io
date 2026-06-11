@@ -4,6 +4,7 @@ const channelId = process.env.YOUTUBE_CHANNEL_ID || '';
 const channelHandle = process.env.YOUTUBE_CHANNEL_HANDLE || '';
 const newsPath = 'news.json';
 const discordPayloadPath = 'youtube-discord-payload.json';
+const nowIso = new Date().toISOString();
 
 if (!channelId) {
   console.log('YOUTUBE_CHANNEL_ID is not set. Skipping YouTube sync.');
@@ -56,9 +57,20 @@ const newUpdates = entries
     url: entry.url,
     approved: true,
     discord: true,
+    discordPostedAt: nowIso,
   }));
 
 if (newUpdates.length === 0) {
+  const pendingDiscordUpdate = findPendingDiscordUpdate(updates);
+  if (pendingDiscordUpdate) {
+    pendingDiscordUpdate.discordPostedAt = nowIso;
+    news.updates = updates;
+    await fs.writeFile(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
+    await writeDiscordPayload(buildDiscordPayload([pendingDiscordUpdate]));
+    console.log(`Prepared pending Discord notification for ${pendingDiscordUpdate.id}.`);
+    process.exit(0);
+  }
+
   console.log('No new YouTube updates.');
   await writeDiscordPayload({ skip: true, reason: 'No new YouTube updates.' });
   process.exit(0);
@@ -133,4 +145,17 @@ function buildDiscordPayload(items) {
   }
 
   return { content: lines.filter(Boolean).join('\n') };
+}
+
+function findPendingDiscordUpdate(updates) {
+  const cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000;
+  return updates.find((item) => {
+    if (item.category !== 'YouTube' || item.discord !== true || item.discordPostedAt) {
+      return false;
+    }
+    if (!item.date || Number.isNaN(Date.parse(`${item.date}T00:00:00Z`))) {
+      return false;
+    }
+    return Date.parse(`${item.date}T00:00:00Z`) >= cutoff;
+  });
 }
