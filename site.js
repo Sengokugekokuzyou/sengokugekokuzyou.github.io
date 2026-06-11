@@ -2,7 +2,7 @@ async function fetchUpdates() {
   const response = await fetch('news.json', { cache: 'no-store' });
   if (!response.ok) throw new Error(`news.json ${response.status}`);
   const data = await response.json();
-  return Array.isArray(data.updates) ? data.updates : [];
+  return sortUpdates(Array.isArray(data.updates) ? data.updates : []);
 }
 
 async function loadUpdates() {
@@ -62,6 +62,15 @@ function renderUpdateItem(item) {
   return `<article class="update-item"><p class="update-date">${date} / ${category}</p><h3>${title}</h3><p>${body}</p>${link}</article>`;
 }
 
+function sortUpdates(updates) {
+  return [...updates].sort((a, b) => {
+    const dateA = Date.parse(`${a.date || '1970-01-01'}T00:00:00Z`);
+    const dateB = Date.parse(`${b.date || '1970-01-01'}T00:00:00Z`);
+    if (dateA !== dateB) return dateB - dateA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
+  });
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -93,6 +102,26 @@ function trackExternalLinks() {
   });
 }
 
+function ensureTrustNavigation() {
+  const links = [
+    ['about.html', '運営者情報'],
+    ['contact.html', 'お問い合わせ'],
+    ['privacy.html', 'Privacy']
+  ];
+
+  document.querySelectorAll('.footer').forEach((footer) => {
+    const existing = new Set([...footer.querySelectorAll('a')].map((link) => link.getAttribute('href')));
+    links.forEach(([href, label]) => {
+      if (existing.has(href)) return;
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = label;
+      footer.appendChild(link);
+    });
+  });
+}
+
 loadUpdates();
 loadLatestYouTube();
+ensureTrustNavigation();
 trackExternalLinks();
