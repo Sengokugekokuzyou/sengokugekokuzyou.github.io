@@ -46,8 +46,10 @@ if (entries.length === 0) {
 const news = JSON.parse(await fs.readFile(newsPath, 'utf8'));
 const updates = Array.isArray(news.updates) ? news.updates : [];
 const existingIds = new Set(updates.map((item) => item.id));
+const latestExistingYouTubeDate = getLatestExistingYouTubeDate(updates);
 const newUpdates = entries
   .filter((entry) => !existingIds.has(`youtube-${entry.id}`))
+  .filter((entry) => !latestExistingYouTubeDate || entry.published.slice(0, 10) >= latestExistingYouTubeDate)
   .map((entry) => ({
     id: `youtube-${entry.id}`,
     date: entry.published.slice(0, 10),
@@ -64,19 +66,21 @@ if (newUpdates.length === 0) {
   const pendingDiscordUpdate = findPendingDiscordUpdate(updates);
   if (pendingDiscordUpdate) {
     pendingDiscordUpdate.discordPostedAt = nowIso;
-    news.updates = updates;
+    news.updates = sortUpdates(updates);
     await fs.writeFile(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
     await writeDiscordPayload(buildDiscordPayload([pendingDiscordUpdate]));
     console.log(`Prepared pending Discord notification for ${pendingDiscordUpdate.id}.`);
     process.exit(0);
   }
 
+  news.updates = sortUpdates(updates);
+  await fs.writeFile(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
   console.log('No new YouTube updates.');
   await writeDiscordPayload({ skip: true, reason: 'No new YouTube updates.' });
   process.exit(0);
 }
 
-news.updates = [...newUpdates, ...updates];
+news.updates = sortUpdates([...newUpdates, ...updates]);
 await fs.writeFile(newsPath, `${JSON.stringify(news, null, 2)}\n`, 'utf8');
 await writeDiscordPayload(buildDiscordPayload(newUpdates));
 console.log(`Added ${newUpdates.length} YouTube update(s).`);
@@ -157,5 +161,24 @@ function findPendingDiscordUpdate(updates) {
       return false;
     }
     return Date.parse(`${item.date}T00:00:00Z`) >= cutoff;
+  });
+}
+
+function getLatestExistingYouTubeDate(updates) {
+  const dates = updates
+    .filter((item) => item.category === 'YouTube' || String(item.id || '').startsWith('youtube-'))
+    .map((item) => item.date)
+    .filter(Boolean)
+    .sort()
+    .reverse();
+  return dates[0] || null;
+}
+
+function sortUpdates(updates) {
+  return [...updates].sort((a, b) => {
+    const dateA = Date.parse(`${a.date || '1970-01-01'}T00:00:00Z`);
+    const dateB = Date.parse(`${b.date || '1970-01-01'}T00:00:00Z`);
+    if (dateA !== dateB) return dateB - dateA;
+    return String(b.id || '').localeCompare(String(a.id || ''));
   });
 }
