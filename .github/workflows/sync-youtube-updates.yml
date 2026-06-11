@@ -5,6 +5,10 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
+concurrency:
+  group: sync-youtube-updates
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -32,3 +36,21 @@ jobs:
           git add news.json
           git commit -m "Sync YouTube updates"
           git push
+
+      - name: Post YouTube update to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ ! -f youtube-discord-payload.json ]; then
+            echo "No YouTube Discord payload file. Skipping."
+            exit 0
+          fi
+          if grep -q '"skip": true' youtube-discord-payload.json; then
+            echo "No new YouTube update for Discord. Skipping."
+            exit 0
+          fi
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set. Skipping Discord post."
+            exit 0
+          fi
+          curl -f -sS -H "Content-Type: application/json" -d @youtube-discord-payload.json "$DISCORD_WEBHOOK_URL"
