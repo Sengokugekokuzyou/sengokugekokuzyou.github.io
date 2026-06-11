@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '*/15 * * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-youtube-updates.yml'
+      - '.github/scripts/sync-youtube-updates.mjs'
 
 concurrency:
   group: sync-youtube-updates
