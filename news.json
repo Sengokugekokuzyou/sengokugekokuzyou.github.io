@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-1895935289",
+      "date": "2026-06-12",
+      "category": "音楽配信",
+      "title": "配信リリース: 二つの太陽 ～関ヶ原の盟約～ (Futatsu No Taiyou - Sekigahara No Meiyaku) - Dual Reign / Ishida Mitsunari & Tokugawa Ieyasu - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E4%BA%8C%E3%81%A4%E3%81%AE%E5%A4%AA%E9%99%BD-%E9%96%A2%E3%83%B6%E5%8E%9F%E3%81%AE%E7%9B%9F%E7%B4%84-futatsu-no-taiyou-sekigahara-no-meiyaku/1895935289?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "1895935289",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ee/e6/88/eee688ae-aa62-4892-da73-4078a0d29092/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "youtube-vu_0gTTEPms",
       "date": "2026-06-11",
       "category": "YouTube",
