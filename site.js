@@ -126,7 +126,15 @@ function ensureTrustNavigation() {
   });
 }
 
+function preserveLegacyAnchors() {
+  if (window.location.hash !== '#games') return;
+  const works = document.querySelector('#works');
+  if (!works) return;
+  setTimeout(() => works.scrollIntoView(), 0);
+}
+
 loadUpdates();
 loadLatestYouTube();
 ensureTrustNavigation();
+preserveLegacyAnchors();
 trackExternalLinks();
