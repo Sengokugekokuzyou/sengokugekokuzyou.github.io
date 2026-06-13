@@ -265,6 +265,7 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
 }
 .card-emblem.cypher { background-color: rgba(127, 23, 23, 0.42); }
 .card-emblem.breed { background-color: rgba(61, 24, 18, 0.48); }
+.card-emblem.gekokujo { background-color: rgba(216, 58, 49, 0.34); }
 .card-emblem.archive { background-color: rgba(232, 185, 91, 0.12); }
 .work-image {
   border-color: rgba(232, 185, 91, 0.42);
