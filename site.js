@@ -104,6 +104,10 @@ function trackExternalLinks() {
 
 function ensureTrustNavigation() {
   const links = [
+    ['world.html', '世界観'],
+    ['kindle.html', 'Kindle出版'],
+    ['kekkanokeifu-guide.html', '血華の系譜ガイド'],
+    ['production-policy.html', '制作方針'],
     ['about.html', '運営者情報'],
     ['contact.html', 'お問い合わせ'],
     ['privacy.html', 'Privacy']
