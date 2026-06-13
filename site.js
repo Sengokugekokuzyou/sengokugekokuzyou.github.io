@@ -46,8 +46,9 @@ async function loadLatestYouTube() {
     const title = escapeHtml(latest.title || '最新YouTube動画');
     const date = escapeHtml(latest.date || '日付未設定');
     const body = escapeHtml(latest.body || '戦国下剋上BEATSの最新動画です。');
+    const media = renderUpdateMedia(latest);
     const link = latest.url ? `<a class="text-link" href="${escapeAttribute(latest.url)}">動画を見る</a>` : '';
-    container.innerHTML = `<p class="update-date">${date}</p><h3>${title}</h3><p>${body}</p>${link}`;
+    container.innerHTML = `${media}<p class="update-date">${date}</p><h3>${title}</h3><p>${body}</p>${link}`;
   } catch (error) {
     container.innerHTML = '<h3>新着動画を読み込めませんでした</h3><p>少し時間を置いて再度確認してください。</p>';
   }
@@ -58,8 +59,31 @@ function renderUpdateItem(item) {
   const date = escapeHtml(item.date || '日付未設定');
   const body = escapeHtml(item.body || '');
   const category = escapeHtml(item.category || 'INFO');
+  const media = renderUpdateMedia(item);
   const link = item.url ? `<a href="${escapeAttribute(item.url)}">詳しく見る</a>` : '';
-  return `<article class="update-item"><p class="update-date">${date} / ${category}</p><h3>${title}</h3><p>${body}</p>${link}</article>`;
+  return `<article class="update-item">${media}<p class="update-date">${date} / ${category}</p><h3>${title}</h3><p>${body}</p>${link}</article>`;
+}
+
+function renderUpdateMedia(item) {
+  const image = getMediaImage(item);
+  if (!image) return '';
+  const alt = escapeAttribute(item.title || '更新画像');
+  return `<img class="update-media" src="${escapeAttribute(image)}" alt="${alt}" loading="lazy" style="display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid rgba(232,185,91,.28);border-radius:8px;margin-bottom:14px;background:rgba(0,0,0,.28);">`;
+}
+
+function getMediaImage(item) {
+  if (item.artworkUrl) return item.artworkUrl;
+  const youtubeId = getYouTubeVideoId(item);
+  return youtubeId ? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg` : '';
+}
+
+function getYouTubeVideoId(item) {
+  const url = String(item.url || '');
+  const match = url.match(/[?&]v=([^&]+)/) || url.match(/youtu\.be\/([^?&/]+)/) || url.match(/\/shorts\/([^?&/]+)/);
+  if (match) return match[1];
+
+  const id = String(item.id || '');
+  return id.startsWith('youtube-') ? id.slice('youtube-'.length) : '';
 }
 
 function sortUpdates(updates) {
@@ -106,7 +130,7 @@ function ensureTrustNavigation() {
   const links = [
     ['world.html', '世界観'],
     ['kindle.html', 'Kindle出版'],
-    ['gekokujo.html', 'GEKOKUJO'],
+    ['gekokujo.html', 'GEKOKUJO: Vagrant Crown'],
     ['kekkanokeifu-guide.html', '血華の系譜ガイド'],
     ['production-policy.html', '制作方針'],
     ['about.html', '運営者情報'],
@@ -126,6 +150,14 @@ function ensureTrustNavigation() {
   });
 }
 
+function normalizeGekokujoLabels() {
+  document.querySelectorAll('.card-emblem.gekokujo span').forEach((node) => {
+    node.textContent = 'GEKOKUJO: Vagrant Crown';
+    node.style.fontSize = '15px';
+    node.style.lineHeight = '1.25';
+  });
+}
+
 function preserveLegacyAnchors() {
   if (window.location.hash !== '#games') return;
   const works = document.querySelector('#works');
@@ -136,5 +168,6 @@ function preserveLegacyAnchors() {
 loadUpdates();
 loadLatestYouTube();
 ensureTrustNavigation();
+normalizeGekokujoLabels();
 preserveLegacyAnchors();
 trackExternalLinks();
