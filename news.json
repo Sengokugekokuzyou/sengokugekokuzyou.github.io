@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-6768160576",
+      "date": "2026-06-19",
+      "category": "音楽配信",
+      "title": "配信リリース: 腰兵糧 (Koshi-Byouro) - The Samurai Ration / Sengoku Food Soul - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E8%85%B0%E5%85%B5%E7%B3%A7-koshi-byouro-the-samurai-ration-sengoku-food-soul/6768160576?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "6768160576",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/fc/ad/ff/fcadffc8-7028-1d14-be00-98a9d14bc81e/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "youtube-Q__QGS3nI6c",
       "date": "2026-06-18",
       "category": "YouTube",
