@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-6768612271",
+      "date": "2026-06-26",
+      "category": "音楽配信",
+      "title": "配信リリース: 歌合・連歌 (Uta-Awase Renga) - The Roots of Freestyle / Sengoku HIPHOP - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E6%AD%8C%E5%90%88-%E9%80%A3%E6%AD%8C-uta-awase-renga-the-roots-of-freestyle/6768612271?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "6768612271",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/86/e8/29/86e829af-3e69-0a97-5405-5c2a002bee33/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "youtube-YnjAmhNSRwo",
       "date": "2026-06-25",
       "category": "YouTube",
