@@ -1,0 +1,34 @@
+name: Weekly site check
+
+on:
+  schedule:
+    # Every Monday 00:10 UTC (Mon 09:10 JST)
+    - cron: '10 0 * * 1'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/weekly-site-check.yml'
+      - '.github/scripts/weekly-site-check.mjs'
+
+concurrency:
+  group: weekly-site-check
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run weekly site check
+        run: node .github/scripts/weekly-site-check.mjs

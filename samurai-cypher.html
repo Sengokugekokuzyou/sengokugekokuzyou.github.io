@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SAMURAI CYPHERの公式作品ページ。戦国下剋上BEATSの楽曲と連動するリズムゲームです。">
-  <title>SAMURAI CYPHER | 戦国下剋上BEATS</title>
+  <meta name="description" content="SAMURAI CYPHER 公式作品ページ。Shirokuro Gamesの音楽ブランド『戦国下剋上BEATS』の楽曲と連動するWebリズムゲーム。現在は体験版を公開中です。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shirokuro Games">
+  <meta property="og:title" content="SAMURAI CYPHER | Shirokuro Games">
+  <meta property="og:description" content="戦国下剋上BEATSの楽曲と連動するWebリズムゲーム。体験版公開中。">
+  <meta property="og:url" content="https://sengokugekokuzyou.github.io/samurai-cypher.html">
+  <title>SAMURAI CYPHER（体験版公開中）| Shirokuro Games</title>
   <link rel="canonical" href="https://sengokugekokuzyou.github.io/samurai-cypher.html">
   <link rel="stylesheet" href="styles.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454558538565957" crossorigin="anonymous"></script>
@@ -24,11 +29,10 @@
     "applicationCategory": "Game",
     "gamePlatform": "Web Browser",
     "genre": ["Rhythm", "Music", "Sengoku"],
-    "description": "戦国下剋上BEATSの楽曲と連動するWebリズムゲームです。",
-    "publisher": {
-      "@type": "Organization",
-      "name": "戦国下剋上BEATS"
-    },
+    "gameItem": { "@type": "Thing", "name": "体験版 / Demo" },
+    "description": "戦国下剋上BEATSの楽曲と連動するWebリズムゲーム。現在は体験版を公開中です。",
+    "author": { "@type": "Organization", "name": "Shirokuro Games" },
+    "publisher": { "@type": "Organization", "name": "Shirokuro Games" },
     "sameAs": [
       "https://sengokugekokujobeats.itch.io/beats-samurai-cypher",
       "https://github.com/Sengokugekokuzyou/samurai-cypher"
@@ -38,46 +42,86 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="./"><span class="brand-mark">BEATS</span><span>戦国下剋上BEATS</span></a>
-    <nav class="nav" aria-label="公式リンク">
-      <a href="./#updates">更新情報</a>
-      <a href="./#youtube">YouTube</a>
-      <a href="./#games">ゲーム</a>
-      <a href="./#community">Discord</a>
+    <a class="brand" href="./" aria-label="Shirokuro Games ホーム"><span class="brand-mark">白黒</span><span>Shirokuro Games</span></a>
+    <nav class="nav" aria-label="サイト内ナビゲーション">
+      <a href="./#works">Games</a>
+      <a href="./#music">Music</a>
+      <a href="kindle.html">Books</a>
+      <a href="./#updates">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
   <main>
     <section class="page-hero">
       <div class="page-hero-inner">
         <div>
-          <p class="eyebrow">Rhythm Game</p>
+          <p class="eyebrow">Rhythm Game — 体験版</p>
           <h1>SAMURAI CYPHER</h1>
-          <p class="lead">戦国下剋上BEATSの楽曲と連動するWebリズムゲーム。公開版はitch.ioでプレイできます。</p>
+          <p class="lead">音楽ブランド「戦国下剋上BEATS」の楽曲と連動するWebリズムゲーム。武将の熱量を音とプレイ体験に変換します。現在は<strong>体験版を公開中</strong>で、itch.ioで遊べます。</p>
+          <p class="english-lead" lang="en">A web rhythm game tied to the Sengoku Gekokujo BEATS music project. A playable demo is available now on itch.io.</p>
           <div class="work-actions">
-            <a class="button primary" href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">itch.ioで遊ぶ</a>
+            <a class="button primary" href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">体験版で遊ぶ（itch.io）</a>
             <a class="button" href="https://github.com/Sengokugekokuzyou/samurai-cypher">GitHubを見る</a>
           </div>
         </div>
         <aside class="work-panel">
-          <span class="status live">公開中</span>
-          <h2>手動確認運用</h2>
-          <p>ゲーム本体の更新後は、最新版一式とitch.io開発ログ用テキストを出力し、代表者確認後にitch.ioへ反映します。</p>
+          <span class="status dev">体験版公開中</span>
+          <h2>作品データ</h2>
           <ul>
-            <li>itch target: sengokugekokujobeats/beats-samurai-cypher</li>
-            <li>GitHub repo: Sengokugekokuzyou/samurai-cypher</li>
-            <li>HP / Discord / devlog下書き運用対象</li>
+            <li>ジャンル: リズム / 音楽 / 戦国</li>
+            <li>プラットフォーム: Webブラウザ（HTML5）</li>
+            <li>ステータス: 体験版（開発継続中）</li>
+            <li>制作: Shirokuro Games</li>
+            <li>音楽: 戦国下剋上BEATS</li>
           </ul>
         </aside>
       </div>
     </section>
     <section class="section">
       <div class="work-details">
-        <article class="work-panel"><p class="eyebrow">Play</p><h2>遊ぶ</h2><p>ブラウザで遊べるHTML5ゲームとして公開中です。</p><a href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">itch.io作品ページ</a></article>
-        <article class="work-panel"><p class="eyebrow">Updates</p><h2>更新</h2><p>アップデートは確認後に公式HPの更新情報とDiscordへ反映します。</p><a href="news.json">更新データ</a></article>
-        <article class="work-panel"><p class="eyebrow">Community</p><h2>連絡先</h2><p>感想、要望、不具合報告は公式Discordへ。</p><a href="https://discord.gg/v37VSgrVHC">Discordへ</a></article>
+        <article class="work-panel">
+          <p class="eyebrow">Play</p>
+          <h2>遊ぶ</h2>
+          <p>ブラウザで遊べるHTML5の体験版を公開中です。完成版に向けて、楽曲や演出を継続的に調整しています。</p>
+          <a href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">体験版ページ（itch.io）</a>
+        </article>
+        <article class="work-panel">
+          <p class="eyebrow">Music</p>
+          <h2>連動する楽曲</h2>
+          <p>プレイ体験は、戦国下剋上BEATSの戦国HIPHOP楽曲と連動します。Apple MusicやSpotifyで配信中の楽曲世界とつながっています。</p>
+          <a href="https://music.apple.com/us/artist/sengoku-gekokujo-beats/1888867608">Apple Music</a>
+        </article>
+        <article class="work-panel">
+          <p class="eyebrow">Feedback</p>
+          <h2>感想・不具合</h2>
+          <p>体験版へのご意見、不具合報告は公式Discordへ。いただいた声は今後の調整の参考にします。</p>
+          <a href="https://discord.gg/v37VSgrVHC">Discordへ</a>
+        </article>
+      </div>
+    </section>
+    <section class="section split">
+      <div>
+        <p class="eyebrow">About the demo</p>
+        <h2>体験版について</h2>
+      </div>
+      <div class="panel">
+        <p>本作は完成版ではなく体験版です。現時点で遊べる範囲を公開し、反応や手応えを確認しながら、楽曲数・演出・操作感を改善していく方針です。アップデートは公式HPの更新情報と公式Discordでお知らせします。</p>
+        <div class="work-actions">
+          <a class="button primary" href="https://sengokugekokujobeats.itch.io/beats-samurai-cypher">体験版で遊ぶ</a>
+          <a class="button" href="./#updates">更新情報</a>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer"><a href="./">Home</a><a href="privacy.html">Privacy</a></footer>
+  <footer class="footer">
+    <a href="./">Home</a>
+    <a href="./#works">Games</a>
+    <a href="kindle.html">Books</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </footer>
+  <script src="site.js" defer></script>
 </body>
 </html>
