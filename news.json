@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-6777757727",
+      "date": "2026-07-03",
+      "category": "音楽配信",
+      "title": "配信リリース: 奥州覇権戦争 (Oushuu Haken Sensou) - War for Oushuu Supremacy / Date Masamune vs Satake Yoshishige - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E5%A5%A5%E5%B7%9E%E8%A6%87%E6%A8%A9%E6%88%A6%E4%BA%89-oushuu-haken-sensou-war-for-oushuu-supremacy/6777757727?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "6777757727",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/10/12/51/101251f5-9f41-2532-267a-86b9d0dfc349/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "youtube-VE8OWZbWj60",
       "date": "2026-06-27",
       "category": "YouTube",
