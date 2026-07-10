@@ -1,6 +1,22 @@
 {
   "updates": [
     {
+      "id": "apple-music-6777784790",
+      "date": "2026-07-10",
+      "category": "音楽配信",
+      "title": "配信リリース: 独眼の狂気 (Dokugan No Kyouki) - One-Eyed Dragon / Date Masamune - Single",
+      "body": "Apple Musicで配信リリースを確認しました。\nSpotifyでも配信状況を確認できます: https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL",
+      "url": "https://music.apple.com/jp/album/%E7%8B%AC%E7%9C%BC%E3%81%AE%E7%8B%82%E6%B0%97-dokugan-no-kyouki-one-eyed-dragon-date-masamune/6777784790?uo=4",
+      "approved": true,
+      "discord": true,
+      "source": "apple-music",
+      "artist": "Sengoku Gekokujo BEATS",
+      "releaseId": "6777784790",
+      "releaseType": "Album",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/40/ad/be/40adbed6-f63f-9a50-75b3-22abecb608ea/artwork.jpg/100x100bb.jpg",
+      "spotifyArtistUrl": "https://open.spotify.com/intl-ja/artist/3WQ99kHfRU1IwI7l5dBqVL"
+    },
+    {
       "id": "apple-music-6777757727",
       "date": "2026-07-03",
       "category": "音楽配信",
