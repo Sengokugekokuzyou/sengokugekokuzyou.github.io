@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="『GEKOKUJO: Vagrant Crown』の最初のプレイアブルデモ「グレンビレッジ編」が何を体験させるのか、そして現在の開発ロードマップをShirokuro Gamesが解説する記事です。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shirokuro Games">
+  <meta property="og:title" content="グレンビレッジ編デモの焦点とロードマップ | Shirokuro Games">
+  <meta property="og:description" content="村での生活、ギルドのクエスト、森の探索と戦闘——最初のプレイアブルデモ「グレンビレッジ編」が扱う範囲と、そこに至るまでの開発ロードマップを解説します。">
+  <meta property="og:url" content="https://sengokugekokuzyou.github.io/devlog-glen-village.html">
+  <meta property="og:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-last-stand-battle.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-last-stand-battle.jpg">
+  <title>グレンビレッジ編デモの焦点とロードマップ | Shirokuro Games</title>
+  <link rel="canonical" href="https://sengokugekokuzyou.github.io/devlog-glen-village.html">
+  <link rel="stylesheet" href="styles.css?v=20260712-adsense">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454558538565957" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LGYYG5ZZS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2LGYYG5ZZS');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "グレンビレッジ編デモの焦点とロードマップ",
+    "url": "https://sengokugekokuzyou.github.io/devlog-glen-village.html",
+    "inLanguage": "ja",
+    "author": { "@type": "Organization", "name": "Shirokuro Games" },
+    "publisher": { "@type": "Organization", "name": "Shirokuro Games" },
+    "about": { "@type": "VideoGame", "name": "GEKOKUJO: Vagrant Crown" }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Shirokuro Games ホーム"><span class="brand-mark">白黒</span><span>Shirokuro Games</span></a>
+    <nav class="nav" aria-label="サイト内ナビゲーション">
+      <a href="./#works">Games</a>
+      <a href="./#music">Music</a>
+      <a href="kindle.html">Books</a>
+      <a href="./#updates">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section policy">
+    <p class="eyebrow">Development Notes — GEKOKUJO: Vagrant Crown</p>
+    <h1>グレンビレッジ編デモの焦点とロードマップ</h1>
+    <p class="lead">『GEKOKUJO: Vagrant Crown』の開発は現在、物語の第1章「グレンビレッジ編」をひとつの遊べる区画としてまとめる段階に入っています。この記事では、デモが何を体験させることを目指しているのか、そして現在の開発の重点を整理します。</p>
+
+    <section class="policy-block">
+      <h2>なぜ「グレンビレッジ編」から始めるのか</h2>
+      <p>Living World RPGとしての手応えは、システム単体では伝わりません。移動・NPC・噂・クエスト・戦闘・時間経過が同じ場所の中で連動して初めて、「止まらない世界」の実感が生まれます。そこでまず、辺境の拠点「グレンビレッジ」とその周辺の森林地帯という限定された区画に、実装済みのシステムを一通り接続することを最初の目標に据えました。</p>
+      <p>大きなマップをいきなり作り込むのではなく、ひとつの区画で体験の芯を確認し、そこから広げていくという段階的な開発方針です。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>デモで体験できることの想定</h2>
+      <ul class="feature-list">
+        <li><strong>村での生活</strong>：グレンビレッジでは会話・ショップ・宿屋・情報屋を利用しながら、拠点としての空気感を体験できます。</li>
+        <li><strong>ギルドのクエスト</strong>：掲示板からクエストを受注し、報酬を得るまでの一連の流れを体験できます。疑似プレイヤーNPCが同じクエストに関わる土台も実装しています。</li>
+        <li><strong>森林地帯の探索と戦闘</strong>：村周辺の地形を旅しながら、鹿・狼・熊・野盗といった存在との索敵・追跡・戦闘までを地続きに体験できます。</li>
+        <li><strong>噂を通じた世界の広がり</strong>：村での出来事が噂として伝わっていく様子を、限定された区画の中で確認できます。詳しい仕組みは<a href="devlog-npc-rumor.html">NPCの記憶と噂の記事</a>で解説しています。</li>
+      </ul>
+    </section>
+
+    <section class="policy-block">
+      <h2>現在の開発の重点</h2>
+      <p>現時点で実装済みのシステムは、ストラテジックマップでの移動と地形処理、疑似プレイヤーNPCの自律行動、村とギルドでのクエスト、シームレス風の戦闘、朝昼夕夜の時間シミュレーションです。現在の重点は、これらを個別の機能としてではなく、グレンビレッジ編という一つの区画の中で違和感なく繋げる調整作業に置いています。</p>
+      <p>あわせて、手動セーブ・オートセーブへの対応、日本語・英語・中国語のローカライズ基盤の整備も並行して進めています。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>この先のロードマップ</h2>
+      <p>現在はSteamストアページを公開し、ウィッシュリスト登録を受け付けている段階です。次の目標は、グレンビレッジ編のプレイアブルデモを公開できる状態まで仕上げることです。デモ公開後は、寄せられた反応をもとに、探索範囲の拡張や新しいNPC・クエストの追加を検討していきます。</p>
+      <p>進捗はSteamデベロッパーアップデートと本サイトの更新情報の両方で、システム解説・スクリーンショットを交えて発信していきます。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>関連リンク</h2>
+      <p><a href="gekokujo.html">GEKOKUJO: Vagrant Crown 公式ページ</a></p>
+      <p><a href="devlog-living-world.html">開発記録: Living World RPGとは何か — 止まらない世界の設計思想</a></p>
+      <p><a href="devlog-npc-rumor.html">開発記録: NPCはなぜ覚えているのか — 記憶・関係・噂の設計</a></p>
+      <p><a href="https://store.steampowered.com/app/4891620/GEKOKUJO_Vagrant_Crown/?beta=0">Steamストアページ（ウィッシュリスト受付中）</a></p>
+      <p><a href="./">Shirokuro Games トップページ</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="./">Home</a>
+    <a href="gekokujo.html">GEKOKUJO</a>
+    <a href="devlog-living-world.html">Living World RPG</a>
+    <a href="devlog-npc-rumor.html">NPCと噂</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </footer>
+  <script src="site.js?v=20260712-adsense" defer></script>
+</body>
+</html>

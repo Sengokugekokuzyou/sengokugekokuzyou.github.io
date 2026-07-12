@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="『GEKOKUJO: Vagrant Crown』のNPCはなぜ覚えているのか。記憶・関係構築・噂の伝播という3つの仕組みを、Shirokuro Gamesが開発視点で解説する記事です。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shirokuro Games">
+  <meta property="og:title" content="NPCはなぜ覚えているのか — 記憶・関係・噂の設計 | Shirokuro Games">
+  <meta property="og:description" content="村人・行商人・旅人は、プレイヤーとの関わりをどう覚え、どう噂として広げるのか。『GEKOKUJO: Vagrant Crown』のNPC設計を解説します。">
+  <meta property="og:url" content="https://sengokugekokuzyou.github.io/devlog-npc-rumor.html">
+  <meta property="og:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-campfire-companions.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-campfire-companions.jpg">
+  <title>NPCはなぜ覚えているのか — 記憶・関係・噂の設計 | Shirokuro Games</title>
+  <link rel="canonical" href="https://sengokugekokuzyou.github.io/devlog-npc-rumor.html">
+  <link rel="stylesheet" href="styles.css?v=20260712-adsense">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454558538565957" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LGYYG5ZZS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2LGYYG5ZZS');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "NPCはなぜ覚えているのか — 記憶・関係・噂の設計",
+    "url": "https://sengokugekokuzyou.github.io/devlog-npc-rumor.html",
+    "inLanguage": "ja",
+    "author": { "@type": "Organization", "name": "Shirokuro Games" },
+    "publisher": { "@type": "Organization", "name": "Shirokuro Games" },
+    "about": { "@type": "VideoGame", "name": "GEKOKUJO: Vagrant Crown" }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Shirokuro Games ホーム"><span class="brand-mark">白黒</span><span>Shirokuro Games</span></a>
+    <nav class="nav" aria-label="サイト内ナビゲーション">
+      <a href="./#works">Games</a>
+      <a href="./#music">Music</a>
+      <a href="kindle.html">Books</a>
+      <a href="./#updates">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section policy">
+    <p class="eyebrow">Development Notes — GEKOKUJO: Vagrant Crown</p>
+    <h1>NPCはなぜ覚えているのか — 記憶・関係・噂の設計</h1>
+    <p class="lead">『GEKOKUJO: Vagrant Crown』の世界を歩くと、同じ村人でも会うたびに反応が変わることに気づきます。これはランダムな演出ではなく、「記憶」「関係」「噂」という3層の仕組みによって支えられています。この記事では、その設計をひとつずつ解説します。</p>
+
+    <section class="policy-block">
+      <h2>第1層: 記憶 — NPCは出来事を覚えている</h2>
+      <p>村人・行商人・旅人といったNPCは、それぞれ固有の記憶を持っています。プレイヤーと交わした会話、助けたか見過ごしたか、初めて会った場所や時間帯——こうした出来事は個々のNPCの記憶として保持され、以降の会話や態度に反映されます。</p>
+      <p>この記憶は「プレイヤーとの1対1の履歴」であると同時に、NPC同士のあいだでも間接的に共有されます。プレイヤーの行動を直接見ていないNPCでも、後述する噂を通じて間接的に「知っている」状態になり得ます。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>第2層: 関係 — 積み重ねが態度を変える</h2>
+      <p>単発の出来事だけでなく、繰り返しの関わりが関係として積み重なっていきます。同じ相手と何度も接することで、警戒から信頼へ、あるいはその逆へと態度が変化していく設計です。関係は数値として一括管理するのではなく、個々のNPCが持つ記憶の集積として表現されるため、「なぜこの態度なのか」をプレイヤーが後から辿れることを重視しています。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>第3層: 噂 — 出来事は人づてに広がる</h2>
+      <p>プレイヤーが見聞きした出来事や、世界で起きた出来事・勢力の動きは、噂としてログに記録され、周囲へ伝播していきます。プレイヤーが直接関わっていない場所での出来事も、噂という形で後から知ることになります。「誰が何をしたかが世界に残り続ける」という感覚は、この噂の仕組みによって生まれています。</p>
+      <p>噂は、前回の記事で紹介した<a href="devlog-living-world.html">疑似プレイヤーNPCの自律行動</a>と組み合わさることで威力を発揮します。プレイヤーの目が届かない場所での出来事も、噂という経路を通じて世界に反映されていくためです。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>設計の狙い: プレイヤーを「見られている」存在にする</h2>
+      <p>この3層構造の狙いは、プレイヤーの行動に「痕跡」を持たせることです。誰かを助ければその評判が広がり、乱暴に振る舞えばそれも噂として伝わっていく。世界がプレイヤーの行動を記憶し、語り継いでいくことで、辺境での日々の選択に重みを持たせることを目指しています。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>関連リンク</h2>
+      <p><a href="gekokujo.html">GEKOKUJO: Vagrant Crown 公式ページ</a></p>
+      <p><a href="devlog-living-world.html">開発記録: Living World RPGとは何か — 止まらない世界の設計思想</a></p>
+      <p><a href="devlog-glen-village.html">開発記録: グレンビレッジ編デモの焦点とロードマップ</a></p>
+      <p><a href="https://store.steampowered.com/app/4891620/GEKOKUJO_Vagrant_Crown/?beta=0">Steamストアページ（ウィッシュリスト受付中）</a></p>
+      <p><a href="./">Shirokuro Games トップページ</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="./">Home</a>
+    <a href="gekokujo.html">GEKOKUJO</a>
+    <a href="devlog-living-world.html">Living World RPG</a>
+    <a href="devlog-glen-village.html">グレンビレッジ編</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </footer>
+  <script src="site.js?v=20260712-adsense" defer></script>
+</body>
+</html>

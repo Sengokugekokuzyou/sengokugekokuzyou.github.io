@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="『GEKOKUJO: Vagrant Crown』の開発コンセプト「Living World RPG」とは何か。プレイヤーが立ち止まっていても世界が動き続ける仕組みと、その設計思想をShirokuro Gamesが解説します。">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shirokuro Games">
+  <meta property="og:title" content="Living World RPGとは何か — 止まらない世界の設計思想 | Shirokuro Games">
+  <meta property="og:description" content="プレイヤーが立ち止まっていても世界は動き続ける。『GEKOKUJO: Vagrant Crown』が目指すLiving World RPGの設計思想を解説する開発記事です。">
+  <meta property="og:url" content="https://sengokugekokuzyou.github.io/devlog-living-world.html">
+  <meta property="og:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-promo-vista.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sengokugekokuzyou.github.io/assets/gekokujo/gekokujo-promo-vista.jpg">
+  <title>Living World RPGとは何か — 止まらない世界の設計思想 | Shirokuro Games</title>
+  <link rel="canonical" href="https://sengokugekokuzyou.github.io/devlog-living-world.html">
+  <link rel="stylesheet" href="styles.css?v=20260712-adsense">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1454558538565957" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LGYYG5ZZS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2LGYYG5ZZS');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Living World RPGとは何か — 止まらない世界の設計思想",
+    "url": "https://sengokugekokuzyou.github.io/devlog-living-world.html",
+    "inLanguage": "ja",
+    "author": { "@type": "Organization", "name": "Shirokuro Games" },
+    "publisher": { "@type": "Organization", "name": "Shirokuro Games" },
+    "about": { "@type": "VideoGame", "name": "GEKOKUJO: Vagrant Crown" }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Shirokuro Games ホーム"><span class="brand-mark">白黒</span><span>Shirokuro Games</span></a>
+    <nav class="nav" aria-label="サイト内ナビゲーション">
+      <a href="./#works">Games</a>
+      <a href="./#music">Music</a>
+      <a href="kindle.html">Books</a>
+      <a href="./#updates">News</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="section policy">
+    <p class="eyebrow">Development Notes — GEKOKUJO: Vagrant Crown</p>
+    <h1>Living World RPGとは何か — 止まらない世界の設計思想</h1>
+    <p class="lead">『GEKOKUJO: Vagrant Crown』の核にあるのは、「プレイヤーが立ち止まっていても、世界は動き続ける」という一行のコンセプトです。この記事では、なぜこの発想にたどり着いたのか、そしてそれをどう実装として組み立てているのかを、Shirokuro Games自身の言葉でまとめます。</p>
+
+    <section class="policy-block">
+      <h2>なぜ「止まらない世界」を目指すのか</h2>
+      <p>多くのシングルプレイRPGでは、世界はプレイヤーを中心に静止しています。村人は話しかけるまで同じ場所に立ち、イベントはプレイヤーが訪れるまで発生しません。それは効率的な作り方ですが、「世界が自分のために用意された舞台」という感覚を強めてしまいます。</p>
+      <p>『GEKOKUJO: Vagrant Crown』が目指したのは逆の手触りです。プレイヤーが村を離れて別の土地を旅している間にも、行商人は目的地に向かって歩き、野盗は縄張りを移し、噂は人から人へ伝わっていく。オフラインのシングルプレイでありながら、オンラインのMMOのような「生きた社会」に迷い込んだような手応えを再現することが、この作品の一番の狙いです。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>疑似プレイヤーNPCという考え方</h2>
+      <p>この仕組みを支えているのが、「疑似プレイヤーNPC」です。商人・旅人・敵対勢力といったNPCは、プレイヤーの操作対象ではありませんが、それぞれが目的地と行動傾向を持ち、ストラテジックマップ上を自律的に移動します。プレイヤーの視界の外でも処理は止まらず、遭遇したときに「ちょうど何かをしていたところに出くわした」という状況が生まれます。</p>
+      <p>この設計により、同じ場所を再訪しても、そこにいるNPCや起きている出来事は前回と同じとは限りません。世界を「舞台」ではなく「並行して動いている場所」として扱うことが、Living World RPGという呼び方の由来です。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>止まらない世界を支える実装</h2>
+      <p>現在実装済みのシステムのうち、Living Worldの根幹を支えているのは次の要素です。</p>
+      <ul class="feature-list">
+        <li><strong>ストラテジックマップ</strong>：道・森・河川・山・橋といった地形ごとに移動ルールを持つマップで、NPCとプレイヤーが同じ空間を共有します。</li>
+        <li><strong>時間シミュレーション</strong>：朝・昼・夕・夜と移り変わる時間帯が、環境音やNPCの行動に影響を与えます。</li>
+        <li><strong>噂・記録ログ</strong>：世界で起きた出来事や勢力の動きが記録として蓄積され、プレイヤーが見聞きした噂として後から参照できます。</li>
+      </ul>
+      <p>これらは単体の機能ではなく、互いに影響し合うことで初めて「止まらない世界」として成立します。詳しい各システムの解説は、NPCの記憶と噂の仕組みを扱った<a href="devlog-npc-rumor.html">「NPCはなぜ覚えているのか」</a>で掘り下げています。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>狼の相棒がいる理由</h2>
+      <p>この「勝手に動き続ける世界」に対して、プレイヤーが孤立しないための存在が、旅の相棒である狼です。世界そのものはプレイヤーの都合に合わせてくれませんが、常に隣にいるパートナーがいることで、辺境を旅する体験は孤独ではなく「二人旅」として設計されています。この対比が、探索と生活の両方に落ち着きを与えています。</p>
+    </section>
+
+    <section class="policy-block">
+      <h2>関連リンク</h2>
+      <p><a href="gekokujo.html">GEKOKUJO: Vagrant Crown 公式ページ</a></p>
+      <p><a href="devlog-npc-rumor.html">開発記録: NPCはなぜ覚えているのか — 記憶・関係・噂の設計</a></p>
+      <p><a href="devlog-glen-village.html">開発記録: グレンビレッジ編デモの焦点とロードマップ</a></p>
+      <p><a href="https://store.steampowered.com/app/4891620/GEKOKUJO_Vagrant_Crown/?beta=0">Steamストアページ（ウィッシュリスト受付中）</a></p>
+      <p><a href="./">Shirokuro Games トップページ</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="./">Home</a>
+    <a href="gekokujo.html">GEKOKUJO</a>
+    <a href="devlog-npc-rumor.html">NPCと噂</a>
+    <a href="devlog-glen-village.html">グレンビレッジ編</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy</a>
+  </footer>
+  <script src="site.js?v=20260712-adsense" defer></script>
+</body>
+</html>
