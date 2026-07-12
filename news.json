@@ -1,6 +1,26 @@
 {
   "updates": [
     {
+      "id": "steam-gekokujo-devlog-1837955055356976",
+      "date": "2026-07-10",
+      "category": "Steam開発ログ",
+      "title": "GEKOKUJO開発アップデート: 実装済み機能まとめを公開",
+      "body": "『GEKOKUJO: Vagrant Crown』のSteam開発ログにて、これまでに実装した機能の総まとめを公開しました。北の森エリアのストラテジックマップ、地形に応じた移動・足音、疑似プレイヤーNPCの自律行動と記憶・噂、動物や敵の出現、シームレス風の戦闘、村のギルド・クエスト、時間経過のシミュレーション、日英中ローカライズ基盤などを紹介しています。",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1837955055356976",
+      "approved": true,
+      "discord": true
+    },
+    {
+      "id": "steam-gekokujo-devlog-1836506165571754",
+      "date": "2026-07-04",
+      "category": "Steam開発ログ",
+      "title": "GEKOKUJO Steamストアページが公開",
+      "body": "『GEKOKUJO: Vagrant Crown』のSteamストアページが正式に公開され、ウィッシュリスト登録の受付が始まりました。「止まらない世界」をテーマに、1,000人の自律的なキャラクターが生きる世界を目指すシングルプレイのシミュレーションRPGです。第1章「グレンビレッジ編」のプレイアブルデモに向けて開発が進んでいます。",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1836506165571754",
+      "approved": true,
+      "discord": true
+    },
+    {
       "id": "youtube-hdBlUcTg3xU",
       "date": "2026-07-10",
       "category": "YouTube",
