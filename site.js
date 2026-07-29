@@ -20,7 +20,7 @@ async function loadUpdates() {
 
     list.innerHTML = approved.map((item) => renderUpdateItem(item)).join('');
   } catch (error) {
-    list.innerHTML = '<article class="update-item"><p class="update-date">取得失敗</p><h3>更新情報を読み込めませんでした</h3></article>';
+    // Fetch failed: leave the static fallback markup already in the page.
   }
 }
 
@@ -50,7 +50,7 @@ async function loadLatestYouTube() {
     const link = latest.url ? `<a class="text-link" href="${escapeAttribute(latest.url)}">動画を見る</a>` : '';
     container.innerHTML = `${media}<p class="update-date">${date}</p><h3>${title}</h3><p>${body}</p>${link}`;
   } catch (error) {
-    container.innerHTML = '<h3>新着動画を読み込めませんでした</h3><p>少し時間を置いて再度確認してください。</p>';
+    // Fetch failed: leave the static fallback markup already in the page.
   }
 }
 
