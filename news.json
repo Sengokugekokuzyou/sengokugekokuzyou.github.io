@@ -12,17 +12,6 @@
       "source": "steam"
     },
     {
-      "id": "steam-gekokujo-devlog-20260917-guild-quest-board",
-      "date": "2026-09-17",
-      "category": "Steam News",
-      "title": "GEKOKUJO開発アップデート: 冒険者ギルドとクエストボードを開発中",
-      "body": "村の受付やクエストボードで依頼を確認し、報酬・推奨レベル・ランク目安を見て正式に受注する流れを構築しています。依頼はLiving Worldの村人・冒険者・世界イベントへ接続される予定です。",
-      "url": "https://store.steampowered.com/news/app/4891620",
-      "approved": true,
-      "discord": false,
-      "source": "steam"
-    },
-    {
       "id": "youtube-C4qe4PRQJFg",
       "date": "2026-09-17",
       "category": "YouTube",
@@ -32,6 +21,17 @@
       "approved": true,
       "discord": true,
       "discordPostedAt": "2026-09-17T11:55:50.028Z"
+    },
+    {
+      "id": "steam-gekokujo-devlog-20260917-guild-quest-board",
+      "date": "2026-09-17",
+      "category": "Steam News",
+      "title": "GEKOKUJO開発アップデート: 冒険者ギルドとクエストボードを開発中",
+      "body": "村の受付やクエストボードで依頼を確認し、報酬・推奨レベル・ランク目安を見て正式に受注する流れを構築しています。依頼はLiving Worldの村人・冒険者・世界イベントへ接続される予定です。",
+      "url": "https://store.steampowered.com/news/app/4891620",
+      "approved": true,
+      "discord": false,
+      "source": "steam"
     },
     {
       "id": "youtube-2D_YPgtgjxI",
