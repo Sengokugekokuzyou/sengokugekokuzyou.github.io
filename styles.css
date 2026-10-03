@@ -533,6 +533,12 @@ h3 { margin: 12px 0 10px; font-size: 22px; }
 .book-body a { color: var(--gold); font-weight: 900; }
 .book-tag { display: inline-block; color: var(--gold); font-size: 11px; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; }
 
+.press-hero .page-hero-visual { object-position: center 38%; }
+.press-link-list { display: grid; gap: 10px; }
+.press-link-list p { margin: 0; color: var(--muted); line-height: 1.75; }
+.press-link-list strong { color: var(--ink); }
+.press-link-list a { color: var(--gold); font-weight: 900; overflow-wrap: anywhere; }
+
 .footer { display: flex; flex-wrap: wrap; gap: 18px; padding: 28px clamp(20px, 6vw, 88px) 46px; color: var(--muted); }
 
 @media (max-width: 980px) {

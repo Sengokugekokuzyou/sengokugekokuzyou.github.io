@@ -129,6 +129,7 @@ function trackExternalLinks() {
 function ensureTrustNavigation() {
   const links = [
     ['gekokujo.html', 'GEKOKUJO: Vagrant Crown'],
+    ['press.html', 'Press Kit'],
     ['kindle.html', 'Books'],
     ['world.html', '世界観'],
     ['kekkanokeifu-guide.html', '血華の系譜ガイド'],

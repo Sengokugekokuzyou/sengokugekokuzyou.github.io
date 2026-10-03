@@ -21,6 +21,7 @@ const REQUIRED_TRUST_PAGES = [
   'index.html',
   'about.html',
   'contact.html',
+  'press.html',
   'privacy.html',
   'production-policy.html',
 ];
