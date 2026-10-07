@@ -1,6 +1,17 @@
 {
   "updates": [
     {
+      "id": "youtube-8zCcZPRDF8c",
+      "date": "2026-10-07",
+      "category": "YouTube",
+      "title": "YouTube更新: 【泥の旗、倒すな】大久保忠世 - 設楽原の鉄壁｜戦国HIPHOP",
+      "body": "@戦国下剋上BEATS のYouTubeに新しい動画を公開しました。",
+      "url": "https://www.youtube.com/watch?v=8zCcZPRDF8c",
+      "approved": true,
+      "discord": true,
+      "discordPostedAt": "2026-10-07T17:47:53.486Z"
+    },
+    {
       "id": "steam-gekokujo-devlog-20260927-combat-feedback",
       "date": "2026-09-27",
       "category": "Steam News",
